@@ -1,5 +1,4 @@
 const express = require("express");
-const LoginVerify = require("../Middlewares/LoginVerify");
 const ChatController = require("../Controller/ChatController");
 const route = express.Router();
 

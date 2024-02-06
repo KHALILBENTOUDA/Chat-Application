@@ -1,7 +1,6 @@
 const express = require("express");
 const UserController= require("../Controller/UserController");
 const LoginVerify = require("../Middlewares/LoginVerify");
-const IntrestControlle = require("../Controller/IntrestControlle");
 const route = express.Router();
 
 route.route('/currentUser').get(LoginVerify,UserController.GetCurrentUser);

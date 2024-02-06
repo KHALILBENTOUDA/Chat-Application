@@ -202,6 +202,7 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
       return;
     }
     const formData = new FormData();
+    console.log(formData)
     formData.append("pictures", selectedFilepost);
     dispatch(SendEmageProfilePost(profileInfo.id, formData));
   };
@@ -460,7 +461,7 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
                           <i
                             id="select"
                             name="select"
-                            className="max-md:text-[10px] max-sm:p-1 transition-all fa-solid fa-plus bottom-0 right-1 w-14 h-14 max-sm:w-9 max-sm:h-9   bg-gradient-to-tr from-lgrn to ble opacity-60  flex items-center justify-center  border-[1px] border-white bg-ble text-white rounded-md cursor-pointer hover:opacity-100"
+                            className="max-md:text-[10px] max-sm:p-1 transition-all fa-solid fa-plus bottom-0 right-1 w-14 h-14 max-sm:w-9 max-sm:h-9   bg-gradient-to-tr from-lgrn to ble   flex items-center justify-center  border-[1px] border-white bg-ble text-white rounded-md cursor-pointer hover:opacity-60"
                             onClick={() =>
                               document.getElementById("fileInput").click()
                             }
@@ -475,13 +476,18 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
                       </label>
                     ) : null}
 
-                    {photos.map((item) => (
+                    { photos.slice(0,5).map((item) => (
+                      
                       <img
                         src={`${Emage_Post}${item?.Posts}`}
                         className="w-14 h-14 max-sm:w-9 max-sm:h-9 rounded-md border-[1px] border-white shadow-sm"
                         alt=""
                       />
+                     
                     ))}
+                     {
+                        photos.length > 5 && <i   onClick={() => handleChangedtails(true)}  className="fa-solid fa-angle-double-right m-2 text-xl opacity-50 cursor-pointer"></i>
+                      }
                   </div>
                   <hr className="mt-5" />
                   <h1 className="text-black font-bold text-lg py-3 max-md:text-sm">
@@ -566,15 +572,39 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
                 </div>
               ) : (
                 <div className="w-full  grid grid-cols-3 gap-1">
-                  {photos.length > 0 ? (
+                  <div className="">
+                  {profileInfo.id === CurrentUser.id ? (
+                   <label htmlFor="dropzone-file-post">
+                        <div class="w-full h-full">
+                          <i
+                            id="select"
+                            name="select"
+                            className="max-md:text-[10px] max-sm:p-1 text-2xl  transition-all fa-solid fa-plus bottom-0 right-1 w-full h-full   bg-gradient-to-tr from-lgrn to ble   flex items-center justify-center  border-[1px] border-white bg-ble text-white rounded-md cursor-pointer hover:opacity-60"
+                            onClick={() =>
+                              document.getElementById("fileInput").click()
+                            }
+                          ></i>
+                        </div>
+                        <input
+                          onChange={handleFileChangePost}
+                          type="file"
+                          id="dropzone-file-post"
+                          className="boder    text-tex  sm:text-sm rounded-xl focus:ring-1 outline-none hidden  w-full   p-2  dark:placeholder-gray-400 font-bold dark:focus:ring-grn dark:focus:border-grn"
+                        />
+                      </label>
+                    ) : null}
+
+                  </div>
+
+                  {photos.length > 0  ? (
                     photos.map((item) => (
-                      <>
+                      <div className="bg-slate-200  rounded-lg ">
                         <img
                           src={`${Emage_Post}${item?.Posts}`}
                           className="w-full  rounded-lg  max-md:h-full border-[1px] border-white shadow-sm"
                           alt=""
                         />
-                      </>
+                      </div>
                     ))
                   ) : (
                     <p className="py-5 opacity-60 ">there's no photos !</p>

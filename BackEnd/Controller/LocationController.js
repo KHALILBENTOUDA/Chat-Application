@@ -1,10 +1,7 @@
 const AsyncHandler = require("../Middlewares/AsyncHandler");
 const { db } = require("../Config/database");
 const AppErrorClass = require("../Middlewares/AppErrorClass");
-const TokenGenerator = require("../Util/TokenGenerator");
 const statusText = require("../Util/statusText");
-const Joi = require('joi');
-const bcrypt = require("bcrypt");
 const getUserLoaciton=AsyncHandler(async(req,res,next)=>{
       const {latitude,longitude,user_id,UserShoies}=req.body
       const KEY ='e23d3b2dbcff4fb4af2564f67bcd0f34'

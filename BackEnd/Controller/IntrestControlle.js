@@ -1,10 +1,7 @@
 const AsyncHandler = require("../Middlewares/AsyncHandler");
 const { db } = require("../Config/database");
 const AppErrorClass = require("../Middlewares/AppErrorClass");
-const TokenGenerator = require("../Util/TokenGenerator");
 const statusText = require("../Util/statusText");
-const Joi = require('joi');
-const bcrypt = require("bcrypt");
 
 
 const getAllInterests=AsyncHandler(async(req,res,next)=>{

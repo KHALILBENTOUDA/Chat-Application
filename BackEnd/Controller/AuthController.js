@@ -4,7 +4,6 @@ const AsyncHandler = require("../Middlewares/AsyncHandler");
 const TokenGenerator = require("../Util/TokenGenerator");
 const statusText = require("../Util/statusText");
 const slugify = require("slugify");
-const Joi = require("joi");
 const bcrypt = require("bcrypt");
 const crypto=require('crypto');
 const sendVerifyEmail = require("../Util/SendVerifyEmail");

@@ -1,5 +1,4 @@
 const express = require("express");
-const LoginVerify = require("../Middlewares/LoginVerify");
 const IntrestControlle = require("../Controller/IntrestControlle");
 const route = express.Router();
 

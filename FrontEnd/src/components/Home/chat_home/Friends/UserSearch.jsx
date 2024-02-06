@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import profile from "../../../../assets/images/profile-1.jpg";
 import { useDispatch, useSelector } from "react-redux";
+import pror from "../../../../assets/images/user (1).png";
+
 // import {
 //   NewNotification,
 //   getAllNotifications,
@@ -96,7 +98,12 @@ const User = ({ userinfo, sethandleNavigate }) => {
         <div className="flex items-center gap-4">
           <img
             onClick={() => handleClick(user)}
-            src={`${Emage_Profile}${user.picture_url}`}
+            src={
+              user?.picture_url
+              ? `${Emage_Profile}${user?.picture_url}`
+              : pror
+          
+          }
             className="w-10 h-10 rounded-full max-md:w-8 max-md:h-8 "
             alt=""
             srcSet=""

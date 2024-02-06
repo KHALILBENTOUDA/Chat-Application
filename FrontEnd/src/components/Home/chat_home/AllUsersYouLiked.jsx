@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import profile from "../../../assets/images/profile-1.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { UserLikesCount, like, unlike } from "../../../Redux/Api/ApiAllusers";
+import pror from "../../../assets/images/user (1).png";
+
 import {
   NewNotification,
   getAllNotifications,
@@ -80,12 +82,17 @@ const AllUsersYouLiked = ({ userinfo, sethandleNavigate }) => {
 
   return (
     <>
-      {isLiked ? (
+      {isLiked  && user.id !== profileInfo.id  ? (
         <div key={user.id} className="py-3 flex items-center w-full ">
           <div className="flex items-center gap-4 cursor-pointer">
             <img
               onClick={() => handleClick(user)}
-              src={`${Emage_Profile}${user.picture_url}`}
+              src={
+                user?.picture_url
+                ? `${Emage_Profile}${user?.picture_url}`
+                : pror
+            
+            }
               className="w-10 h-10 rounded-full max-md:w-8 max-md:h-8 "
               alt=""
               srcSet=""

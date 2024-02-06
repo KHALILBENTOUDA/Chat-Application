@@ -1,7 +1,6 @@
 const nodemailer = require('nodemailer');
-const fs = require('fs');
 const path = require('path');
-const AppErrorClass = require('../Middlewares/AppErrorClass');
+
 
 const sendVerifyEmail = async (options) => {
   try {
