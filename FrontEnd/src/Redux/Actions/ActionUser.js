@@ -1,9 +1,10 @@
 import * as User from '../Api/ApiCurrentUser'
 
-export const GetCurrentUser=()=>async(dispatch)=>{
+export const GetCurrentUser=(token)=>async(dispatch)=>{
       dispatch({ type: 'AUTH_START' });
       try{
-           const res=await User.CurrentUser()
+           const res=await User.CurrentUser(token)
+           console.log(res)
            if(res.data.status==="success"){
             dispatch({ type: "AUTH_SUCCESS", data: res.data.user });
            }

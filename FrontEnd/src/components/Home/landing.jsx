@@ -14,15 +14,16 @@ const Landing = () => {
   const [location, setlocation] = useState(null)
   const dispatch = useDispatch();
 
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    dispatch(GetCurrentUser());
+    dispatch(GetCurrentUser(token));
   }, []);
 
   useEffect(() => {
-    dispatch(getAllUsers())
+    dispatch(getAllUsers(token))
   }, [])
-  
+
 
   
   return (

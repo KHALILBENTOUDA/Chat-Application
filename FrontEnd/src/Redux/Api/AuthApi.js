@@ -1,7 +1,7 @@
 import axios from "axios";
+import { BASE_URL } from "../../utils/BASE_URL";
 
-const API= axios.create({baseURL:"http://localhost:5002/api/v1/"})
-
+const API= axios.create({baseURL:`${BASE_URL}/api/v1/`})
 export const login=(formData)=>API.post('login',formData,{withCredentials:true})
 export const register=(formData)=>API.post('register',formData,{withCredentials:true})
 export const logout=()=>API.get('logout',{withCredentials:true})

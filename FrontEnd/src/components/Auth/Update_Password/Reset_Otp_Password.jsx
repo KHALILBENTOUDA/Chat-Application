@@ -5,6 +5,7 @@ import ResetPasswordForm from "./ResetPasswordForm";
 import OTPVerificationForm from "./OTP";
 import UpdatePasswordForm from "./UpdatePassword";
 import PageNotFound from "../../../utils/PageNotFound";
+import { BASE_URL } from "../../../utils/BASE_URL";
 
 const Reset_Otp_Password = () => {
   const [email, setEmail] = useState("");
@@ -42,7 +43,7 @@ const Reset_Otp_Password = () => {
     try {
       // Send a request to the backend to initiate the password reset
       const response = await axios.post(
-        "http://localhost:5002/api/v1/resetpassword",
+        `${BASE_URL}/api/v1/resetpassword`,
         { email }
       );
       setMessage(response.data.message);
@@ -63,7 +64,7 @@ const Reset_Otp_Password = () => {
     try {
       // Send a request to the backend to initiate the password reset
       const response = await axios.post(
-        "http://localhost:5002/api/v1/resetpassword",
+        `${BASE_URL}/api/v1/resetpassword`,
         { email, otp }
       );
       setMessage(response.data.message);
@@ -83,7 +84,7 @@ const Reset_Otp_Password = () => {
     try {
       // Send a request to the backend to initiate the password reset
       const response = await axios.post(
-        "http://localhost:5002/api/v1/updatepassword",
+        `${BASE_URL}/api/v1/updatepassword`,
         { otp, email, newPassword }
       );
       setMessage(response.data.message);

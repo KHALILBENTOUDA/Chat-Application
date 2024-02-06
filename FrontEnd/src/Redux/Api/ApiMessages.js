@@ -1,6 +1,7 @@
 import axios from "axios"
+import { BASE_URL } from "../../utils/BASE_URL"
 
-const API= axios.create({baseURL:`http://localhost:5002/api/v1/`})
+const API= axios.create({baseURL:`${BASE_URL}/api/v1/`})
 
 export const getSpechiatChat=(chat_id)=> API.get(`message/${chat_id}`,{withCredentials:true})
 export const AddMessage=(data)=> API.post(`message`,data,{withCredentials:true})

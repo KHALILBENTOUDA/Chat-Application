@@ -21,6 +21,7 @@ const Conversation = ({
     (state) => state.MessageNotifications.notificaions
   );
   const profileInfo = JSON.parse(localStorage.getItem("profile"));
+  const token = localStorage.getItem("token");
   const [notification_m, setnotification_m] = useState(null);
   const [text, settext] = useState("");
   const [time, settime] = useState("");
@@ -32,7 +33,7 @@ const Conversation = ({
       const chatUser = JSON.parse(chat.members);
       const userId = chatUser.find((id) => id !== currentUser);
       try {
-        const { data } = await GetUser(userId);
+        const { data } = await GetUser(userId,token);
         if (data.status === "success") {
           setuserSide(data.User);
           dispatch({ type: "SAVE_USER_CHAT", data: data.User });

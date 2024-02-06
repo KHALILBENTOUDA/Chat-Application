@@ -1,5 +1,6 @@
 import axios from "axios"
+import { BASE_URL } from "../../utils/BASE_URL"
 
-const API= axios.create({baseURL:"http://localhost:5002/api/v1/"})
+const API= axios.create({baseURL:`${BASE_URL}/api/v1/`})
 
 export const interests=()=> API.get('intrestes',{withCredentials:true})

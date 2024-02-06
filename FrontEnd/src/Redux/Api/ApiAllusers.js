@@ -1,6 +1,7 @@
 import axios from "axios";
+import { BASE_URL } from "../../utils/BASE_URL";
 
-const API = axios.create({ baseURL: "http://localhost:5002/api/v1/user/" });
+const API = axios.create({ baseURL: `${BASE_URL}/api/v1/user/` });
 
 export const allUsers = () => API.get('all', { withCredentials: true });
 export const like = (likeData) => API.put('like', likeData,{ withCredentials: true });

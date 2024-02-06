@@ -99,11 +99,8 @@ const User = ({ userinfo, sethandleNavigate }) => {
           <img
             onClick={() => handleClick(user)}
             src={
-              user?.picture_url
-              ? `${Emage_Profile}${user?.picture_url}`
-              : pror
-          
-          }
+              user?.picture_url ? `${Emage_Profile}${user?.picture_url}` : pror
+            }
             className="w-10 h-10 rounded-full max-md:w-8 max-md:h-8 "
             alt=""
             srcSet=""

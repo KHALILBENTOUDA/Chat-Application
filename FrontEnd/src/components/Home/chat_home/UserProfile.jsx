@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import profile from "../../../assets/images/user (1).png";
 import star from "../../../assets/images/star.png";
 import { Link, useNavigate } from "react-router-dom";
+import pror from "../../../assets/images/user (1).png";
 import Seggentions from "./Seggentions";
 import { useDispatch, useSelector } from "react-redux";
 import ageimage from "../../../assets/images/age.png";
@@ -243,6 +244,8 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
     if (CurrentUser !== null) fetchUser();
   }, [profileInfo, CurrentUser]);
 
+  console.log(profileInfo)
+
   // useEffect(() => {
   //  const viewProfile=async()=>{
   //   const viewData = {
@@ -329,7 +332,7 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
                       <i
                         id="select"
                         name="select"
-                        className="max-md:text-[10px] max-sm:p-1 transition-all fa-solid fa-plus bottom-0 right-1 absolute p-1.5 border-2 border-white bg-lgrn text-white rounded-full cursor-pointer hover:bg-slate-300"
+                        className="max-md:text-[10px]  max-sm:p-1 transition-all fa-solid fa-plus bottom-0 right-1 absolute p-1.5 border-2 border-white bg-lgrn text-white rounded-full cursor-pointer hover:bg-slate-300"
                         onClick={() =>
                           document.getElementById("fileInput").click()
                         }
@@ -461,7 +464,7 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
                           <i
                             id="select"
                             name="select"
-                            className="max-md:text-[10px] max-sm:p-1 transition-all fa-solid fa-plus bottom-0 right-1 w-14 h-14 max-sm:w-9 max-sm:h-9   bg-gradient-to-tr from-lgrn to ble   flex items-center justify-center  border-[1px] border-white bg-ble text-white rounded-md cursor-pointer hover:opacity-60"
+                            className="max-md:text-[10px] max-sm:p-1 transition-all fa-solid fa-plus bottom-0 right-1 w-14 h-14 max-sm:w-9 max-sm:h-9   bg-gradient-to-tr from-lgrn to ble   flex items-center justify-center  border-[1px] border-white bg-ble text-white rounded-md cursor-pointer hover:opacity-60 "
                             onClick={() =>
                               document.getElementById("fileInput").click()
                             }
@@ -471,7 +474,7 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
                           onChange={handleFileChangePost}
                           type="file"
                           id="dropzone-file-post"
-                          className="boder    text-tex  sm:text-sm rounded-xl focus:ring-1 outline-none hidden  w-full   p-2  dark:placeholder-gray-400 font-bold dark:focus:ring-grn dark:focus:border-grn"
+                          className="boder     text-tex  sm:text-sm rounded-xl focus:ring-1 outline-none hidden  w-full   p-2  dark:placeholder-gray-400 font-bold dark:focus:ring-grn dark:focus:border-grn"
                         />
                       </label>
                     ) : null}

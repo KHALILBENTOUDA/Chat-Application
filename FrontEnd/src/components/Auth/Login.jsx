@@ -13,21 +13,6 @@ import logo from '../../assets/images/1-removebg-preview.png'
 const SignIn = () => {
   
 
-  const handleAuth = async () => {
-    try {
-      const resposs = await axios.get("http://localhost:5002", {
-        withCredentials: true,
-      });
-      if (resposs.data.status === "success"){
-       const cuurent=resposs.data.user
-       localStorage.setItem("currentUser",JSON.stringify(cuurent))
-      } 
-    } catch (err) {
-        seterror(err.message);
-    }
-  };
-  
-
   const [error, seterror] = useState("")
   const [isLogined,setisLogined] = useState()
   const loading = useSelector((state) => state.authReducer.loading);
@@ -58,9 +43,6 @@ const dispatch = useDispatch();
   e.preventDefault()
    dispatch(login(data,navigate))
 }
-
-
-console.log(status)
 
 
 

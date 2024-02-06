@@ -3,8 +3,8 @@ const statusText = require("../Util/statusText");
 const JWT = require("jsonwebtoken");
 
 const LoginVerify = (req, res, next) => {
-  
-    const token=req.cookies.token
+    const authHeader=req.headers['Authorization'] || req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1];
       if (!token) {
         return next(
           new AppErrorClass(401, "", statusText.FAIL)

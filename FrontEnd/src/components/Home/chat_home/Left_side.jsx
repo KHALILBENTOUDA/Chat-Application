@@ -4,6 +4,8 @@ import Conversation from "./Conversation";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Emage_Profile } from "../../../Redux/Api/ApiEmage";
+import { CurrentUser } from "../../../Redux/Api/ApiCurrentUser";
+import pror from "../../../assets/images/user (1).png";
 
 const Left_side = ({
   Chats,
@@ -35,6 +37,10 @@ const Left_side = ({
     sethandleNavigate("profile");
   };
 
+  console.log(CurrentUser)
+
+
+
   return (
     <div
       className={`${
@@ -54,7 +60,7 @@ const Left_side = ({
         className="no-scrollbar h-[57px] max-md:h-[40px]   m-0.5 mr-1  rounded-md bg-white  px-4 shadow-md shadow-slate-100 max-md:mx-0 drop-shadow-sm flex items-center cursor-pointer  "
       >
         <img
-          src={`${Emage_Profile}${newEmage || CurrentUser.picture_url}`}
+          src={CurrentUser?.picture_url?`${Emage_Profile}${newEmage || CurrentUser.picture_url}`:pror}
           className="w-10 h-10  max-md:w-9  max-md:h-9   rounded-full border-[2px] border-white "
           alt=""
         />
@@ -108,6 +114,8 @@ const Left_side = ({
             
             } */
 
+            filteredChats?(
+
               filteredChats.map((chat) => (
                 <div key={chat.id} onClick={() => setcurrentChat(chat)}>
                   <Conversation
@@ -123,6 +131,11 @@ const Left_side = ({
                   />
                 </div>
               ))
+
+            ):(
+              <div className="">Loading...</div>
+            )
+
             }
           </ul>
         </div>

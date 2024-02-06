@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import PageNotFound from '../../utils/PageNotFound';
+import { BASE_URL } from '../../utils/BASE_URL';
 
 const Email = () => {
   const [validURL, setValidURL] = useState(false);
@@ -10,7 +11,7 @@ const Email = () => {
   useEffect(() => {
     const handleAuth = async () => {
       try {
-        const response = await axios.get(`http://localhost:5002/api/v1/${id}/verify/${token}`, {
+        const response = await axios.get(`${BASE_URL}/api/v1/${id}/verify/${token}`, {
           withCredentials: true,
         });
 

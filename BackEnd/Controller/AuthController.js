@@ -76,6 +76,7 @@ const register = AsyncHandler(async (req, res, next) => {
 
 const login = AsyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
+
   if (!email || !password) {
     return next(
       new AppErrorClass(401, "Email Or Password are Required", statusText.FAIL)
@@ -184,9 +185,17 @@ const login = AsyncHandler(async (req, res, next) => {
       lastname: user.lastname,
       slug:user.slug
     });
-    res.cookie("token", token).status(200).json({
+    const loginuser={
+      user:user.id,
+      slug:user.slug,
+      name:user.name,
+      lastname:user.lastname,
+      profilecomplate:user.profilecomplate
+    }
+    res.status(200).json({
       status: statusText.SUCCESS,
-      user:user,
+      token:token,
+      user:loginuser,
       message: "login successful",
     });
   } else {

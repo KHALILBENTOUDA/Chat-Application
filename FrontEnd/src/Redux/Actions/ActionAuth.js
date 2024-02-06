@@ -4,9 +4,14 @@ import * as AuthApi from "../Api/AuthApi";
 export const login = (formData, navigate) => async(dispatch) => {
   dispatch({ type: "AUTH_START" });
   try {
+    console.log(formData);
     const response = await AuthApi.login(formData);
-    dispatch({ type: "AUTH_SUCCESS", data: response.data.user, status:response.data.status, message:response.data.message});
+    localStorage.setItem("token", response.data.token);
+    dispatch({ type: "AUTH_SUCCESS",data:response.data.user, status:response.data.status, message:response.data.message ,token:response.data.token });
+
+    console.log(response.data)
     const hasCompleted = response.data.user.profilecomplate;
+    console.log(hasCompleted)
      if(hasCompleted === 1) {
       navigate("/chat");
       }else{
@@ -17,8 +22,8 @@ export const login = (formData, navigate) => async(dispatch) => {
       err.response &&
       err.response.status >= 400 &&
       err.response.status <= 500
-
     ) {
+      console.log(err.response.data.message)
       dispatch({ type: "AUTH_ERROR", message: err.response.data.message ,status:err.response.data.status});
     }
   }

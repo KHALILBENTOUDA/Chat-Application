@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { BASE_URL } from "../../utils/BASE_URL";
 
 const NoticLocalisation = () => {
   const CurrentUser = useSelector((state) => state.authReducer.authData);
@@ -29,7 +30,8 @@ const NoticLocalisation = () => {
             };
 
             const res = await axios.post(
-              `http://localhost:5002/api/v1/location`,
+
+              `${BASE_URL}/api/v1/location`,
               locaitondata
             );
             if (res.status === "success") {
@@ -64,7 +66,7 @@ const NoticLocalisation = () => {
             };
 
             const res = await axios.post(
-              `http://localhost:5002/api/v1/location`,
+              `${BASE_URL}/api/v1/location`,
               locaitondata
             );
             if (res.status === "success") {
@@ -88,10 +90,11 @@ const NoticLocalisation = () => {
     return null;
   }
 
+
   return (
     <>
-      {!CurrentUser.UserShoies ? (
-        <div className="noticLocation h-[200px] rounded-2xl backdrop-blur-lg bg-slate-300  shadow-md shadow-slate-300 ">
+      {CurrentUser.UserShoies === 0 ? (
+        <div className="noticLocation h-[200px] rounded-2xl  bg-white  shadow-md shadow-slate-300 ">
           <div className="w-full flex justify-end p-2 ">
             <i
               className="fa-solid fa-close text-lg rounded-full bg-slate-200 w-8 h-8 flex items-center justify-center cursor-pointer "

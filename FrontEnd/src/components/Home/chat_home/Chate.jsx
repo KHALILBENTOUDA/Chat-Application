@@ -36,6 +36,7 @@ const Chate = ({
   const [sendMessage, setsendMessage] = useState("");
 
   const profileInfo = JSON.parse(localStorage.getItem("profile"));
+  const token = localStorage.getItem("token");
   const [timed, settimed] = useState(null);
   const [IsLiked, setIsLiked] = useState(true);
   const [notification, setnotification] = useState([]);
@@ -127,7 +128,7 @@ const Chate = ({
       const userId = chatbo.find((id) => id !== currentUser);
       setUserTyping(userId);
       try {
-        const resposs = await GetUser(userId);
+        const resposs = await GetUser(userId,token);
         setChatUser(resposs.data.User);
       } catch (err) {
         console.log(err.message);
