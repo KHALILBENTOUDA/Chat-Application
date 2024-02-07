@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import profile from "../../../assets/images/profile-2.jpg";
-import choseChat from "../../../assets/images/start-2.jpeg";
+import choseChat from "../../../assets/images/online-dating-with-young-man-woman-are-texting-each-other-chatting-via-smartphone-illustration_138260-1015.jpeg";
 import { format, render, cancel, register } from "timeago.js";
 import { GetUser } from "../../../Redux/Api/ApiCurrentUser";
 import {
@@ -436,7 +436,7 @@ const Chate = ({
             })}
 
             {typing?.status === UserTyping ? (
-              <div class="container py-4">
+              <div class="container py-4 absolute bottom-0">
                 <img
                   src={`${Emage_Profile}${ChatUser?.picture_url}`}
                   onClick={handleClick}
@@ -508,9 +508,9 @@ const Chate = ({
           )}
         </>
       ) : (
-        <div className="h-full w-full flex flex-col items-center">
-          <img className="w-[100%]" src={choseChat} alt="" />
-          <div className=" opacity-50">Chose one to talk with!</div>
+        <div className="h-full w-full flex flex-col items-center justify-center">
+          <img className="w-[70%] opacity-[0.5]" src={choseChat} alt="" />
+          <div className="opacity-50">Chose one to talk with!</div>
         </div>
       )}
     </>

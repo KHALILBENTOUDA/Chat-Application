@@ -26,17 +26,9 @@ const app = express();
 const server = http.createServer(app);
 const PORT = process.env.PORT || 3000;
 
-// Socket.IO setup
-// const io = socketIO(server, {
-//   cors: {
-//     origin: "http://localhost:5173",
-//   }
-// });
 
 let activeUsers = [];
 io.on("connection", (socket) => {
-  console.log('Connected:');
-
   socket.on('new_user', (newUserId) => {
     if (!activeUsers.some((user) => user.userId === newUserId)) {
       activeUsers.push({
@@ -66,7 +58,6 @@ io.on("connection", (socket) => {
     if (user) {
       io.to(user.socketId).emit('recieve-message',{...data,created_at:new Date(),isRead:false});
     } else {
-      console.log(`User ${resiverId} not found`);
     }
   });
 });

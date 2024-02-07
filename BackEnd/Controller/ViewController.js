@@ -62,9 +62,6 @@ const createView = AsyncHandler(async (req, res, next) => {
 //         }
 //       } catch (error) {
 //         return next(new AppErrorClass(500, error.message, statusText.FAIL));
-//       }finally{
-//             db.end()
-//       }
 //     });
     
 

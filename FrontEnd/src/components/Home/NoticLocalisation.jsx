@@ -5,6 +5,8 @@ import { BASE_URL } from "../../utils/BASE_URL";
 
 const NoticLocalisation = () => {
   const CurrentUser = useSelector((state) => state.authReducer.authData);
+  const profileInfo = JSON.parse(localStorage.getItem("profile"));
+
   const [showNotice, setShowNotice] = useState(false);
 
   // Show the notice after 5 seconds
@@ -23,7 +25,7 @@ const NoticLocalisation = () => {
           try {
             const { latitude, longitude } = position.coords;
             const locaitondata = {
-              user_id: CurrentUser.id,
+              user_id: profileInfo.id,
               latitude: latitude,
               longitude: longitude,
               UserShoies: 0,
@@ -59,7 +61,7 @@ const NoticLocalisation = () => {
           try {
             const { latitude, longitude } = position.coords;
             const locaitondata = {
-              user_id: CurrentUser.id,
+              user_id: profileInfo.id,
               latitude: latitude,
               longitude: longitude,
               UserShoies: 1,
@@ -90,10 +92,9 @@ const NoticLocalisation = () => {
     return null;
   }
 
-
   return (
     <>
-      {CurrentUser.UserShoies === 0 ? (
+      {profileInfo.UserShoies === 0 ? (
         <div className="noticLocation h-[200px] rounded-2xl  bg-white  shadow-md shadow-slate-300 ">
           <div className="w-full flex justify-end p-2 ">
             <i

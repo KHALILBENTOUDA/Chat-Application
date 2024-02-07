@@ -19,13 +19,15 @@ const createMessage = AsyncHandler(async (req, res, next) => {
               const selectSql = `SELECT * FROM Message WHERE message_id = LAST_INSERT_ID()`;
           
               const values = [chat_id, sender_id, text];
-          
+              console.log(values);
               db.query(insertSql, values, (err, result) => {
                   if (err) return new AppErrorClass(500, err, statusText.FAIL);
-                    
+                  console.log(err)
+                  console.log(result)
                   // Perform a select query to get the inserted data
                   db.query(selectSql, (err, insertedData) => {
                       if (err) return new AppErrorClass(500, err, statusText.FAIL);
+                      console.log(insertedData)
                       res.status(201).json({
                           status: statusText.SUCCESS,
                           data: insertedData,
