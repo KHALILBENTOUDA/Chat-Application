@@ -110,24 +110,26 @@ const Notificaiton = ({ sethandleNavigate, setCountNotif }) => {
                 <li
                   key={not.id}
                   onClick={() => handleClick(not)}
-                  className={`flex w-full relative items-center py-2 my-1 px-6 max-md:px-3 rounded-md ${
+                  className={`flex w-full  items-center justify-between py-2 my-1 px-6 max-md:px-3 rounded-md ${
                     IsRead.includes(not.id) || not.is_Read
                       ? "opacity-40"
                       : "bg-white cursor-pointer"
                   }`}
                 >
+                  <div className="flex items-center ">
                   <img
                     src={`${Emage_Profile}${not.senderInfo.picture_url}`}
                     className="h-10 w-10 max-md:h-7 max-md:w-7 rounded-full"
                     alt=""
                   />
-                  <h1 className="text-blue-600 text-sm font-bold px-3 max-sm:text-[10px] max-md:text-xs w-[80%] items-center">
+                  <h1 className="text-blue-600 text-sm font-bold px-3 max-sm:text-[10px] max-md:text-xs   items-center">
                     @{sender.name + " "}
                     <span className="text-black font-thin text-xs max-sm:text-[10px] max-md:text-xs opacity-60">
                       {not.content}
                     </span>
                   </h1>
-                  <div className="text-xs max-sm:text-[9px] max-md:text-[10px] bottom-3 font-bold text-black opacity-50 absolute right-5">
+                  </div>
+                  <div className="text-xs max-sm:text-[9px] max-md:text-[10px]  font-bold text-black opacity-50 mt-1">
                     {formattedTime}
                   </div>
                 </li>
