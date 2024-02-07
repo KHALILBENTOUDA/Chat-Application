@@ -18,11 +18,11 @@ const Landing = () => {
 
   useEffect(() => {
     dispatch(GetCurrentUser(token));
-  },[token]);
+  }, []);
 
   useEffect(() => {
     dispatch(getAllUsers(token))
-  },[token])
+  }, [])
 
 console.log(CurrentUser)
 console.log(token)
@@ -34,7 +34,7 @@ console.log(token)
         CurrentUser?(
         <ChatGeneral/> 
           ):(
-          <div className="w-full h-[90vh]  flex items-center justify-center">
+          <div className="w-full h-[90vh] bg-white flex items-center justify-center">
           <div class="animate-spin inline-block w-8 h-8 border-[3px] border-current border-t-transparent text-lgrn rounded-full dark:text-lgrn" role="status" aria-label="loading">
             <span class="sr-only">Loading...</span>
           </div>

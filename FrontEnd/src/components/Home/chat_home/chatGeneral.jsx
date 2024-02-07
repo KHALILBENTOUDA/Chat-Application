@@ -14,9 +14,7 @@ const ChatGeneral = () => {
   return (
     <div className=" text-tex h-full w-full  p-8 max-md:p-3 no-scrollbar bg-cardColor ">
       {
-        CurrentUser.is_verified?(
-
-
+        CurrentUser?.is_verified?(
       <div className=" mx-auto my-auto  rounded-2xl bg-cardColor  overflow-hidden relative ">
         <Topline
           sethandleNavigateRigt={sethandleNavigateRigt}

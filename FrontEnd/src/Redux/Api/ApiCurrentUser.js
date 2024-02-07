@@ -3,8 +3,7 @@ import { BASE_URL } from "../../utils/BASE_URL";
 
 const API = axios.create({ baseURL: `${BASE_URL}/api/v1/user/` });
 
-export const CurrentUser = (token) =>
-  API.get("currentUser", {
+export const CurrentUser = (token) =>API.get("currentUser", {
     withCredentials: true,
     headers:{
       "Authorization": "Bearer " + token,

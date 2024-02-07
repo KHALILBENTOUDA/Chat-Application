@@ -10,6 +10,7 @@ export const GetCurrentUser=(token)=>async(dispatch)=>{
            }
          }catch(err){
            if(err.response && err.response.status >= 400 && err.response.status<=500){
+               console.log(err.response.data.message)
                 dispatch({ type: 'AUTH_ERROR', message:err.response.data.message });
            }
       }
