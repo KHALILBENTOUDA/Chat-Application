@@ -35,8 +35,8 @@ const RouteAll = () => {
         {!userData && <Navbar />}
       <Routes>
         <Route  path="/" element={<Landing />}>
-          <Route path="profile" element={<UserProfile/>}/>
           <Route path="chat" element={<Chate/>}/>
+          <Route path="profile" element={<UserProfile/>}/>
           <Route path="edit_profile" element={<UpdateUserProfile/>}/>
           <Route path="friends" element={ < PageFriends />}/>
         </Route>
