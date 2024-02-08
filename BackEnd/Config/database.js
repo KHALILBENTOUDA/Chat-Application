@@ -13,6 +13,7 @@ const db=mysql.createConnection({
         console.error('Error connecting to MySQL:', err);
         return;
       }
+      console.log('connecting to MySQL')
   })
 module.exports = {db}
 

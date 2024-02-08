@@ -97,7 +97,7 @@ const PageFriends = () => {
             <input
               onChange={handleChangeSearches}
               onKeyPress={handleEnterKey}
-              className="outline-none placeholder:text-[10px] max-md:placeholder:text-[8px]  text-[12px] max-md:p-1   pl-4  p-2 placeholder:w-[140%]  placeholder:text-slate-700 placeholder:opacity-50  items-center  w-full mx-auto rounded-xl  mt-8 shadow-sm shadow-slate-200  border  bg-white "
+              className="outline-none placeholder:text-[10px] max-sm:placeholder:text-[7px]  placeholder:flex flex placeholder:items-center max-sm:text-[9px]  placeholder:pl-1 max-sm:placeholder:pl-1  text-[12px] max-md:p-1     p-2 placeholder:w-[140%]  placeholder:text-slate-700 placeholder:opacity-50  items-center  w-full mx-auto rounded-lg  mt-8 shadow-sm shadow-slate-200  border  bg-white "
               type="text"
               name="age"
               value={searchData.age}
@@ -107,7 +107,7 @@ const PageFriends = () => {
             <input
               onChange={handleChangeSearches}
               onKeyPress={handleEnterKey}
-              className="outline-none placeholder:text-[10px] text-[12px] pl-4  p-2 placeholder:w-[140%]   placeholder:text-slate-700 placeholder:opacity-50  items-center  w-full mx-auto rounded-xl  mt-8 shadow-sm shadow-slate-200  border  bg-white"
+              className="outline-none placeholder:text-[10px] max-sm:placeholder:text-[7px]  placeholder:flex flex placeholder:items-center max-sm:text-[9px]   placeholder:pl-1 max-sm:placeholder:pl-1  text-[12px] max-md:p-1     p-2 placeholder:w-[140%]  placeholder:text-slate-700 placeholder:opacity-50  items-center  w-full mx-auto rounded-lg  mt-8 shadow-sm shadow-slate-200  border  bg-white"
               type="text"
               name="location"
               value={searchData.location}
@@ -117,7 +117,7 @@ const PageFriends = () => {
             <input
               onChange={handleChangeSearches}
               onKeyPress={handleEnterKey}
-              className="outline-none placeholder:text-[10px] text-[12px] pl-4 text-grn   p-2 placeholder:w-[140%] placeholder:text-slate-700 placeholder:opacity-50  items-center  w-full mx-auto rounded-xl  mt-8 shadow-sm shadow-slate-200  border  bg-white"
+              className="outline-none placeholder:text-[10px] max-sm:placeholder:text-[7px]  placeholder:flex flex placeholder:items-center max-sm:text-[9px]   placeholder:pl-1 max-sm:placeholder:pl-1  text-[12px] max-md:p-1.5   p-2  placeholder:w-[140%]  placeholder:text-slate-700 placeholder:opacity-50  items-center  w-full mx-auto rounded-lg  mt-8 shadow-sm shadow-slate-200  border  bg-white"
               type="text"
               name="interests"
               value={searchData.interests}

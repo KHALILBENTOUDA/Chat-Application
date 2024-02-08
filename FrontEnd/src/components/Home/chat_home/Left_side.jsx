@@ -87,7 +87,7 @@ const Left_side = ({
         Messages
       </h1>
       <hr className=" shadow-md shadow-slate-200 drop-shadow-xl" />
-      <div className="no-scrollbar h-full overflow-y-auto">
+      <div className="no-scrollbar h-[420px]  max-md:h-[400px]   overflow-y-auto ">
         <div className="h-full">
           <ul className="transition duration-200 ease-in-out ">
             {

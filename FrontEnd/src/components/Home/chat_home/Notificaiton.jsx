@@ -80,6 +80,8 @@ const Notificaiton = ({ sethandleNavigate, setCountNotif }) => {
 
   const navigate = useNavigate();
   const handleClick = (user) => {
+    navigate('/profile')
+    dispatch({ type: "GET_USERS_DATA", data:user });
     handleIsRead(user.id);
   };
 
@@ -109,7 +111,7 @@ const Notificaiton = ({ sethandleNavigate, setCountNotif }) => {
               return (
                 <li
                   key={not.id}
-                  onClick={() => handleClick(not)}
+                  onClick={() => handleClick(not.senderInfo)}
                   className={`flex w-full  items-center justify-between py-2 my-1 px-6 max-md:px-3 rounded-md ${
                     IsRead.includes(not.id) || not.is_Read
                       ? "opacity-40"

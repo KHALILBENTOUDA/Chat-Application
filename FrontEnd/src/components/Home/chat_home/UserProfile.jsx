@@ -125,12 +125,15 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
       const first_id = profileInfo.id;
       const second_id = CurrentUser.id;
       const getchatdata = await getChat(first_id, second_id);
-      setcurrentChat(getchatdata.data.chat[0]);
-      navigate("/chat");
+      console.log(getchatdata);
       if (getchatdata.data.chat[0]) {
+        setcurrentChat(getchatdata.data.chat[0]);
+        navigate("/chat");
       } else {
         const res = await startChatWith(chatDat);
+        console.log(res)
         setcurrentChat(res.data.chat[0]);
+
         navigate("/chat");
       }
     } catch (e) {
@@ -212,15 +215,15 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
   useEffect(() => {
     const handleGetAllposts = async () => {
       try {
-        const { data } = await allposts(CurrentUser.id);
 
+        const { data } = await allposts(CurrentUser.id);
         setphotos(data.data);
       } catch (e) {
         console.log(e);
       }
     };
-    return () => handleGetAllposts();
-  }, [CurrentUser]);
+   handleGetAllposts();
+  }, [CurrentUser.id]);
 
   const handleChangedtails = (status) => {
     setnavig(status);
@@ -243,8 +246,6 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
     };
     if (CurrentUser !== null) fetchUser();
   }, [profileInfo, CurrentUser]);
-
-  console.log(profileInfo)
 
   // useEffect(() => {
   //  const viewProfile=async()=>{
@@ -284,7 +285,7 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
           {CurrentUser.Covers ? (
             <img
               src={`${Emage_Cover}${cover || CurrentUser.Covers}`}
-              className="w-full rounded-md h-[300px] max-md:h-[200px] shadow-xl "
+              className="w-full rounded-md h-[300px] max-md:h-[200px] shadow-xl bg-slate-200 "
               alt=""
             />
           ) : (
@@ -322,7 +323,7 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
                       ? `${Emage_Profile}${newEmage || CurrentUser.picture_url}`
                       : profile
                   }
-                  className="w-[110px] h-[110px] lg:h-[130px]  lg:w-[130px] rounded-full  max-md:border-2 max-sm:w-[80px] max-sm:h-[80px]   border-4 border-white  "
+                  className="w-[110px] h-[110px] lg:h-[130px]  lg:w-[130px] rounded-full  max-md:border-2 max-sm:w-[90px] max-sm:h-[90px]   border-4 border-white bg-slate-100  "
                   alt=""
                 />
                 {profileInfo.id === CurrentUser.id ? (
@@ -350,7 +351,7 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
             </div>
           </div>
           <div className="pt-10">
-            <h1 className="text-black font-bold text-xl pt-12 max-sm:pt-3  max-md:pt-3 max-sm:text-xs">
+            <h1 className="text-black font-bold text-xl pt-12 max-sm:pt-6  max-md:pt-3 max-sm:text-xs">
               {Username.toUpperCase()}
             </h1>
             <p className="text-sm font-bold text-grn max-sm:text-[10px] ">
@@ -464,7 +465,7 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
                           <i
                             id="select"
                             name="select"
-                            className="max-md:text-[10px] max-sm:p-1 transition-all fa-solid fa-plus bottom-0 right-1 w-14 h-14 max-sm:w-9 max-sm:h-9   bg-gradient-to-tr from-lgrn to ble   flex items-center justify-center  border-[1px] border-white bg-ble text-white rounded-md cursor-pointer hover:opacity-60 "
+                            className="max-md:text-[10px] max-sm:p-1 transition-all fa-solid fa-plus bottom-0 right-1 w-14 h-14  max-sm:w-8 max-sm:h-8   bg-gradient-to-tr from-lgrn to ble   flex items-center justify-center  border-[1px] border-white bg-ble text-white rounded-md cursor-pointer hover:opacity-60 "
                             onClick={() =>
                               document.getElementById("fileInput").click()
                             }
@@ -483,13 +484,13 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
                       
                       <img
                         src={`${Emage_Post}${item?.Posts}`}
-                        className="w-14 h-14 max-sm:w-9 max-sm:h-9 rounded-md border-[1px] border-white shadow-sm"
+                        className="w-14 h-14 max-sm:w-8 max-sm:h-8 rounded-md border-[1px] border-white shadow-sm"
                         alt=""
                       />
                      
                     ))}
                      {
-                        photos.length > 5 && <i   onClick={() => handleChangedtails(true)}  className="fa-solid fa-angle-double-right m-2 text-xl opacity-50 cursor-pointer"></i>
+                        photos.length > 5 && <i   onClick={() => handleChangedtails(true)}  className="fa-solid fa-angle-double-right m-2 text-xl max-sm:text-lg max-sm:m-1 opacity-50 cursor-pointer"></i>
                       }
                   </div>
                   <hr className="mt-5" />

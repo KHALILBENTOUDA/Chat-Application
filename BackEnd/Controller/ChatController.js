@@ -20,10 +20,10 @@ const creatChat=AsyncHandler(async(req,res,next)=>{
       if(err) return new AppErrorClass(500, err, statusText.FAIL)
       db.query(sql_getChat,[sender,resever],(err,result)=>{
             if(err) return new AppErrorClass(500,err, statusText.FAIL)
-            res.status(200).json({
-                  status:statusText.SUCCESS,
-                  chat:result
-            })
+                  res.status(200).json({
+                        status:statusText.SUCCESS,
+                        chat:result
+                  })
       
            })
      

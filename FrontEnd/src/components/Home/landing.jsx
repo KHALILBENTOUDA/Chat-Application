@@ -24,8 +24,6 @@ const Landing = () => {
     dispatch(getAllUsers(token))
   }, [])
 
-console.log(CurrentUser)
-console.log(token)
 
   return (
     <div className="">
