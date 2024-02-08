@@ -53,20 +53,20 @@ const Nav = () => {
       <nav  class="  container w-[90%] md:w-[60%] mx-auto bg-cardColor rounded-full px-4 mt-3 max-md:px-1  shadow-sm relative  ">
         <div class=" max-w-screen-xl flex flex-wrap items-center justify-between  mx-auto p-2  md:px-0 md:p-3  w-full ">
         <a href="/" class="flex items-center">
-            <img src={logo} class=" mr-3 w-[120px] max-md:w-[80px] max-sm:mr-0"/>
+            <img src={logo} class=" mr-3 w-[120px] max-md:w-[90px] max-sm:mr-0"/>
         </a>
         <div class="flex items-center justify-center  md:order-2  g:w-[35%] ">
          <div className="relative flex items-center">
 
 
                 <button type="button"  data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" class=" flex items-center justify-center rounded-full   bg-black text-white dark:text-gray-400rounded-lg text-xs  max-sm:text-[8px]    p-1 lg:p-2.5   " >  
-                <Link class='px-1 max-sm:text-[8px]' to='auth/login'>
+                <Link class='px-1 max-sm:text-[10px]' to='auth/login'>
                     Join Us Today
                 </Link>
                 </button>
 
         </div>
-            <button data-collapse-toggle="navbar-search" onClick={hiddenhad}  type="button" class="inline-flex items-center ml-3 p-1.5 w-7 h-7 justify-center   text-sm max-sm:text-xs max-sm:w-6 max-sm:h-6  text-gray-500 rounded-lg md:hidden focus:outline-none focus:ring-1 focus:ring-grn focus:bg-lgrn dark:text-gray-400  shadow shadow-slate-350 " aria-controls="navbar-search" aria-expanded="false">
+            <button data-collapse-toggle="navbar-search" onClick={hiddenhad}  type="button" class="inline-flex items-center ml-3 p-1.5 w-8 h-8 justify-center   text-sm max-sm:text-xs max-sm:w-6 max-sm:h-6  text-gray-500 rounded-lg md:hidden focus:outline-none focus:ring-1 focus:ring-grn focus:bg-lgrn dark:text-gray-400  shadow shadow-slate-350 " aria-controls="navbar-search" aria-expanded="false">
                 <svg class="w-5 h-5 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
                 </svg>

@@ -6,9 +6,9 @@ import ava from '../../assets/images/second Chat App 2.png'
 
 const IntroAPP = () => {
   return (
-    <section className='bg-black text-white w-[98%] mx-auto rounded-3xl p-10 max-md:p-4 '>
+    <section className='bg-black text-white w-[99%] mx-auto rounded-3xl p-10 max-md:p-4 '>
       <div className="flex  gap-3 w-full md:h-[72vh] max-lg:flex-col max-md:pag-0  max-md:text-center ">
-            <div className=" w-full  max-md:w-[80%] mx-auto  bg-notifi rounded-3xl flex gap-2 p-2 ">
+            <div className=" w-full  max-md:w-[100%] mx-auto  bg-notifi rounded-3xl flex gap-2 mb-6 ">
 
                   <img className='rounded-3xl w-[50%]' src={image} alt="" />
                         <div className="w-full  flex flex-col gap-2">
