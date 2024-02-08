@@ -21,7 +21,6 @@ const sendVerifyEmail = async (options) => {
     // Define the email options
     const imagePath = path.join(__dirname, '2-removebg-preview.png');
 
-
     const mailOptions = {
       from: 'Matcha <' + process.env.EMAIL_USERNAME + '>',
       to: options.email,
@@ -69,6 +68,7 @@ const sendVerifyEmail = async (options) => {
               <img src="cid:myImg" alt="logo">
             </a>
           </header>
+          
           ${options.main}
 
           <hr style="margin-top: 2rem;"/>
@@ -86,8 +86,6 @@ const sendVerifyEmail = async (options) => {
       </body>
     </html>
     
-
-
       `,
       attachments: [{
         filename: '2-removebg-preview.png',

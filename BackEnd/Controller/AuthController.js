@@ -50,10 +50,35 @@ const register = AsyncHandler(async (req, res, next) => {
             
             // Send verification email
             const link = `${req.protocol}://localhost:5173/user/${user_id}/verify/${verificationToken}`;
+            
+            console.log(link)
             sendVerifyEmail({
               email: req.body.email,
               subject: 'Verify your email address',
-              message: `Click the following: ${link}`
+              main:`
+
+              <main style="margin-top: 2rem;color:white">
+              <h2 style="text-gray-700 dark:text-gray-200">Hi ${req.body.name},</h2>
+      
+              <p style="margin-top: 0.5rem; line-height: 1.5rem;font-weight: 600;">
+                   Verifiy your email address 
+              </p>
+      
+              <p style="mt-4 leading-loose text-gray-600 dark:text-gray-300">
+                  This code will only be valid for the next 5 minutes. If the code does not work, you can use this login verification link:
+              </p>
+              
+              <button   style="padding: 0.5rem 1.5rem; margin-top: 1rem; font-size: 0.875rem; font-weight: 500; text-transform: capitalize; transition: background-color 0.3s; background-color: #b849eb; border-radius:20px; border:none;  color: white;">
+                  <a style="color:white"  href=${link}> Verify email</a>
+              </button>
+            
+              
+              <p style="margin-top: 2rem; color: #ddd;">
+                  Thanks, <br>
+                  Matcha Team
+              </p>
+          </main>`
+              
             })
               .then(() => {
                 console.log('Email sent successfully');
@@ -132,7 +157,7 @@ const login = AsyncHandler(async (req, res, next) => {
                           return next( new AppErrorClass(401,'Error inserting verification toke',statusText.FAIL))   
                         }
                         try{
-                          const link =`${req.protocol}://${req.get('host')}/api/v1/${user.id}/verify/${verificationToken}`
+                          const link =`${req.protocol}://localhost:5173/user/${user.id}/verify/${verificationToken}`
                               await sendVerifyEmail(
                                     {
                                           email:user.email,
