@@ -79,7 +79,7 @@ const handleSubmit = async(e)=>{
                     <>
                     <div>
                       <label htmlFor={inp.lable} className="block mb-2 max-md:mb-1 ml-1  text-sm font-bold  text-gray-500 max-md:text-[11px] ">{inp.lable}</label>
-                      <input onChange={handleChange} type={inp.type} name={inp.name} id="email" value={inp.value} className="border mb-3.5  shadow-sm drop-shadow-sm max-md:placeholder:text-[10px] max-md:p-2   max-md:text-xs max-sm:text-[12px]  placeholder:text-sm  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none block w-full  dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn" placeholder={inp.palce}  />
+                      <input onChange={handleChange} type={inp.type} name={inp.name} id="email" value={inp.value} className="flex items-center  border mb-3  shadow-sm drop-shadow-sm max-md:placeholder:text-[10px] max-md:p-2   max-md:text-xs max-sm:text-[12px]  placeholder:text-xs  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none  w-full p-2.5 dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn " placeholder={inp.palce}  />
                     </div>
                     
                     </>
