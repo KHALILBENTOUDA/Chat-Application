@@ -51,11 +51,15 @@ const register = AsyncHandler(async (req, res, next) => {
             // Send verification email
             const link = `${req.protocol}://localhost:5173/user/${user_id}/verify/${verificationToken}`;
             
+
+            //
             console.log(link)
             sendVerifyEmail({
               email: req.body.email,
               subject: 'Verify your email address',
               main:`
+
+            
 
               <main style="margin-top: 2rem;color:white">
               <h2 style="text-gray-700 dark:text-gray-200">Hi ${req.body.name},</h2>
