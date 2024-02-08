@@ -52,7 +52,7 @@ const register = AsyncHandler(async (req, res, next) => {
             const link = `${req.protocol}://localhost:5173/user/${user_id}/verify/${verificationToken}`;
             
 
-            //
+            // //
             console.log(link)
             sendVerifyEmail({
               email: req.body.email,
