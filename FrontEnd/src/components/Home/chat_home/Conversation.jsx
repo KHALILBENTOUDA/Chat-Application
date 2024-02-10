@@ -121,56 +121,93 @@ const Conversation = ({
       onClick={() => setnotification_m([])}
       className=" transition duration-200 ease-in-out  cursor-pointer  flex py-2.5 max-md:py-1.5  items-center bg-cardColor  px-1.5 hover:bg-white shadow-sm drop-shadow-sm   shadow-slate-200 rounded-md hover:shadow-lg  m-2  "
     >
-      <div className=" relative flex items-end justify-end">
-        <img
-          src={
-            userSide?.picture_url
-              ? `${Emage_Profile}${userSide?.picture_url}`
-              : pror
-          }
-          onClick={() => handleClick(userSide)}
-          className="w-14 h-12  max-md:w-10  max-md:h-9    rounded-full border-[2px] border-white cursor-pointer"
-          alt=""
-        />
-        {OnlineUsers && (
-          <span className="h-3 w-3 border-2 border-white mr-0.5  absolute right  rounded-full bg-green-500"></span>
-        )}
-      </div>
-      <div
-        className="flex justify-between w-full  "
-        onClick={handleNavigateFunciont}
-      >
-        <div className="px-3 ">
-          <h1 className="font-bold text-[14px] max-md:text-[13px] ">
-            {userSide ? userSide.name : "loading..."}
-          </h1>
-          {text ? (
-            <p className="text-xs opacity-50">
-              <i className="fa-solid fa-check text-[10px] text-3 max-md:text-[9px]  pr-2"></i>
-              {text}
-            </p>
-          ) : messageEmage ? (
-            <p className="text-xs opacity-50">
-              <i className="fa-solid fa-image text-[12px] text-3 max-md:text-[9px]  pr-1.5"></i>{" "}
-              {userSide?.name} send new Emage
-            </p>
-          ) : null}
+
+      {
+        userSide?(
+
+          <>
+          <div className=" relative flex items-end justify-end">
+          <img
+            src={
+              userSide?.picture_url
+                ? `${Emage_Profile}${userSide?.picture_url}`
+                : pror
+            }
+            onClick={() => handleClick(userSide)}
+            className="w-14 h-12  max-md:w-10  max-md:h-9    rounded-full border-[2px] border-white cursor-pointer"
+            alt=""
+          />
+          {OnlineUsers && (
+            <span className="h-3 w-3 border-2 border-white mr-0.5  absolute right  rounded-full bg-green-500"></span>
+          )}
         </div>
-        <div className="flex flex-col  justify-start  items-end">
-          <span
-            className={`text-[11px] opacity-50 mt-[2px]  ${
-              notification_m?.length ? "text-green-400" : ""
-            }`}
-          >
-            {time}
-          </span>
-          {notification_m?.length ? (
-            <div className="w-5 h-5  rounded-full bg-green-400 text-[10px] font-bold  flex text-white   justify-center items-center  mt-0.5">
-              {notification_m?.length}
+        <div
+          className="flex justify-between w-full  "
+          onClick={handleNavigateFunciont}
+        >
+          <div className="px-3 ">
+            <h1 className="font-bold text-[14px] max-md:text-[13px] ">
+              {userSide ? userSide.name : "loading..."}
+            </h1>
+            {text ? (
+              <p className="text-xs opacity-50">
+                <i className="fa-solid fa-check text-[10px] text-3 max-md:text-[9px]  pr-2"></i>
+                {text}
+              </p>
+            ) : messageEmage ? (
+              <p className="text-xs opacity-50">
+                <i className="fa-solid fa-image text-[12px] text-3 max-md:text-[9px]  pr-1.5"></i>{" "}
+                {userSide?.name} send new Emage
+              </p>
+            ) : null}
+          </div>
+          <div className="flex flex-col  justify-start  items-end">
+            <span
+              className={`text-[11px] opacity-50 mt-[2px]  ${
+                notification_m?.length ? "text-green-400" : ""
+              }`}
+            >
+              {time}
+            </span>
+            {notification_m?.length ? (
+              <div className="w-5 h-5  rounded-full bg-green-400 text-[10px] font-bold  flex text-white   justify-center items-center  mt-0.5">
+                {notification_m?.length}
+              </div>
+            ) : null}
+          </div>
+        </div>
+        </>
+
+        ):(
+
+
+          <div class=" rounded-md p-2 max-w-sm w-full mx-auto">
+          <div class="animate-pulse flex space-x-4">
+            <div class="rounded-full bg-slate-200 h-10 w-10"></div>
+            <div class="flex-1 space-y-6  items-center">
+              <div class="space-y-3">
+              <div class="grid grid-cols-5 gap-4">
+                  <div class="h-3 bg-slate-200 rounded-3xl col-span-3"></div>
+                  <div class="h-2  rounded-3xl col-span-1"></div>
+                  <div class="h-2 bg-slate-200 rounded-3xl col-span-1"></div>
+                </div>
+                <div class="grid grid-cols-5 gap-4">
+                  <div class="h-2 bg-slate-200 rounded-3xl col-span-2"></div>
+                </div>
+              </div>
             </div>
-          ) : null}
+          </div>
         </div>
-      </div>
+
+
+
+
+        )
+      }
+
+
+
+   
     </li>
   );
 };

@@ -6,6 +6,7 @@ const statusText = require("../Util/statusText");
 const createMessage = AsyncHandler(async (req, res, next) => {
       const { chat_id, sender_id, text } = req.body;
  
+
       if(text){
 
             if (!text.trim()) {
@@ -23,6 +24,7 @@ const createMessage = AsyncHandler(async (req, res, next) => {
                   if (err) return new AppErrorClass(500, err, statusText.FAIL);
                   // Perform a select query to get the inserted data
                   db.query(selectSql, (err, insertedData) => {
+
                       if (err) return new AppErrorClass(500, err, statusText.FAIL);
                       res.status(201).json({
                           status: statusText.SUCCESS,
@@ -37,10 +39,14 @@ const createMessage = AsyncHandler(async (req, res, next) => {
             values = [chat_id, sender_id, req.body.image];
 
             db.query(insertSql, values, (err, result) => {
+
+
                   if (err) return new AppErrorClass(500, err, statusText.FAIL);
                     
                   // Perform a select query to get the inserted data
                   db.query(selectSql, (err, insertedData) => {
+   
+
                       if (err) return new AppErrorClass(500, err, statusText.FAIL);
                       res.status(201).json({
                           status: statusText.SUCCESS,

@@ -9,8 +9,8 @@ const editProfile = AsyncHandler(async (req, res, next) => {
       const {id}=req.params;
       const sql_Emage_Update = 'UPDATE  pictures SET picture_url= ?  WHERE user_id =? AND is_profile_picture=1';
       db.query(sql_Emage_Update,[req.body.pictures,id],(err,results)=>{
+            console.error(err);
             if(err) return new AppErrorClass(500,err, statusText.FAIL)
-
             res.status(201).json({
                   status:statusText.SUCCESS,
                   data:req.body.pictures
@@ -26,10 +26,11 @@ const editCover=AsyncHandler(async(req,res,next)=>{
       UPDATE pictures
       SET Covers = ?
       WHERE user_id = ? AND pictures.is_profile_picture=1;
-      ;
     `;
       db.query(sql_Emage_Update,[req.body.pictures,id],(err,results)=>{
+
             if(err) return new AppErrorClass(500,err, statusText.FAIL)
+
             res.status(201).json({
                   status:statusText.SUCCESS,
                   data:req.body.pictures

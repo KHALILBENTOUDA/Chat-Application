@@ -49,8 +49,8 @@ const Nav = () => {
 
         
   return (
-    <section className='text-black w-full bg-white '>
-      <nav  class="  container w-[90%] md:w-[60%] mx-auto bg-cardColor rounded-full px-4 mt-3 max-md:px-1  shadow-sm relative  ">
+    <section className='text-black w-full bg-white z-50 '>
+      <nav  class="  container w-[90%] md:w-[60%] mx-auto bg-cardColor rounded-full px-4 mt-3 max-md:px-1  shadow-sm relative z-50  ">
         <div class=" max-w-screen-xl flex flex-wrap items-center justify-between  mx-auto p-2  md:px-0 md:p-3  w-full ">
         <a href="/" class="flex items-center">
             <img src={logo} class=" mr-3 w-[120px] max-md:w-[90px] max-sm:mr-0"/>

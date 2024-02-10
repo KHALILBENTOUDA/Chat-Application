@@ -3,6 +3,8 @@ import profile from "../../../assets/images/profile-2.jpg";
 import choseChat from "../../../assets/images/online-dating-with-young-man-woman-are-texting-each-other-chatting-via-smartphone-illustration_138260-1015.jpeg";
 import { format, render, cancel, register } from "timeago.js";
 import { GetUser } from "../../../Redux/Api/ApiCurrentUser";
+import pror from "../../../assets/images/user (1).png";
+
 import {
   AddMessage,
   getSpechiatChat,
@@ -38,7 +40,7 @@ const Chate = ({
   const profileInfo = JSON.parse(localStorage.getItem("profile"));
   const token = localStorage.getItem("token");
   const [timed, settimed] = useState(null);
-  const [IsLiked, setIsLiked] = useState(true);
+  const [IsLiked, setIsLiked] = useState("");
   const [notification, setnotification] = useState([]);
   const [startTypping, setstartTypping] = useState(false);
   const [selectedFileMessage, setSelectedFileMessage] = useState(null);
@@ -165,13 +167,15 @@ const Chate = ({
     if (isRecording) {
       handleStop();
     }
-
+    
     settyping(false);
+
     const messagesend = new FormData();
     messagesend.append("chat_id", chat.chat_id);
     messagesend.append("sender_id", currentUser);
     messagesend.append("text", sendMessage);
     messagesend.append("image", selectedFileMessage);
+    
 
 
     const chatbo = JSON.parse(chat.members);
@@ -211,6 +215,7 @@ const Chate = ({
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
+      setmessges([...messges,sendMessage ]);
       handelSandMessage();
       settyping(false);
     } else {
@@ -299,50 +304,79 @@ const Chate = ({
     <>
       {chat ? (
         <>
-          <div className="flex py-1.5 items-center rounded-md h-[60px]   shadow-md shadow-slate-200 drop-shadow-md relative max-md:px-1  px-2  w-full z-10   ">
+          <div className="flex py-1.5 items-center rounded-md h-[60px]  shadow-md  shadow-slate-200  relative max-md:px-1  px-2  w-full z-10   ">
             <i
               onClick={() => sethandleNavigate("leftSide")}
               className="fa-solid max-md:text-[14px] max-md:pr-2  md:hidden  fa-angle-left text-[20px] pr-3 cursor-pointer pl-1 "
             ></i>
-            <div
-              onClick={handleClick}
-              className="w-[45px] h-[45px] max-md:w-[32px] max-md:h-[32px]  relative flex items-end  justify-end "
-            >
-              <img
-                src={`${Emage_Profile}${ChatUser?.picture_url}`}
-                className="w-[45px] h-[45px] max-md:w-[32px] max-md:h-[32px]   rounded-full border-[2px] border-white cursor-pointer "
-                alt=""
-              />
-              {
-                OnlineUsers(chat) ? (
-                  <div class=" h-2.5 w-2.5 duration-300  max-md:h-2.5  max-md:w-2.5  border-[1px] border-slate-50 mr-0.5  absolute right  rounded-full bg-green-500">
-                    <div class=" animate-ping  absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75 duration-300 "></div>
+
+
+
+
+            {
+              ChatUser?(
+                  <div className="flex items-end justify-end pl-2">
+                    <div
+                      onClick={handleClick}
+                      className="w-[45px] h-[45px] max-md:w-[32px] max-md:h-[32px] relative flex items-end justify-end"
+                    >
+                      <img
+                        src={
+                          ChatUser?.picture_url
+                ? `${Emage_Profile}${ChatUser?.picture_url}`
+                : pror}
+                        className="w-[45px] h-[45px] max-md:w-[32px] max-md:h-[32px] rounded-full border-[2px] border-white cursor-pointer"
+                        alt=""
+                      />
+                      {OnlineUsers(chat) ? (
+                        <div className="h-2.5 w-2.5 duration-300 max-md:h-2.5 max-md:w-2.5 border-[1px] border-slate-50 mr-0.5 absolute right rounded-full bg-green-500">
+                          <div className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75 duration-300"></div>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+
+                    <div
+                      onClick={handleClick}
+                      className="px-4 max-md:px-2 cursor-pointer"
+                    >
+                      <h1 className="font-bold text-[17px] max-md:text-xs mt-1">
+                        {ChatUser ? ChatUser.name : "loading..."}
+                      </h1>
+                      {OnlineUsers(chat) === true ? (
+                        <p className="text-[11px] max-md:text-[8px] opacity-50 text-green-500 font-bold">
+                          Online
+                        </p>
+                      ) : (
+                        <p className="text-[12px] max-md:text-[8px] opacity-50">
+                          {format(chat.lastOnline)}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                ) : (
-                  ""
-                )
 
-                // <span className="h-2.5 w-2.5  max-md:h-2.5  max-md:w-2.5  border-[1px] border-slate-50 mr-0.5  absolute right  rounded-full bg-green-500"></span>
-              }
-            </div>
-            <div
-              onClick={handleClick}
-              className=" px-4  max-md:px-2 cursor-pointer "
-            >
-              <h1 className=" font-bold text-[17px]  max-md:text-xs mt-1">
-                {ChatUser ? ChatUser.name : "loading..."}
-              </h1>
+              ):(
+               
+                <div class=" rounded-md p-2 max-w-sm w-full ">
+                <div class="animate-pulse flex space-x-4 items-center">
+                  <div class="rounded-full bg-slate-100 h-11 w-11"></div>
+                  <div className="flex-1 space-y-6 items-center">
+                          <div className="space-y-3">
+                            <div className="grid grid-cols-6 gap-4">
+                              <div className="h-4 bg-slate-100 rounded-3xl col-span-3"></div>
+                            </div>
+                            <div className="grid grid-cols-5 gap-4">
+                              <div className="h-2 bg-slate-100 rounded-3xl col-span-2"></div>
+                            </div>
+                          </div>
+                        </div>
+                </div>
+              </div>
 
-              {OnlineUsers(chat) === true ? (
-                <p className="text-[11px]  max-md:text-[8px] opacity-50  text-green-500 font-bold  ">
-                  Online
-                </p>
-              ) : (
-                <p className="text-[12px]  max-md:text-[8px] opacity-50 ">
-                  {format(chat.lastOnline)}
-                </p>
-              )}
-            </div>
+              )
+            }
+
 
             <div className="flex items-center justify-end  text-lgrn gap-4 max-md:gap-3  right-0 max-md:px-3  absolute px-4">
               <i className="fa-solid fa-video-camera text-2xl max-md:text-[15px]  flex items-center">
@@ -381,7 +415,7 @@ const Chate = ({
               prevMessageTime = messageTime;
 
               return (
-                <div key={ele.messageId} className="text-center">
+                <div key={ele.messageId} className="text-center ">
                   <div
                     className={`flex  ${
                       ele?.sender_id === currentUser
@@ -400,10 +434,10 @@ const Chate = ({
                             null
                         )
             } */}
-                    <div className="mx-4 mb-0.5 flex ">
+                    <div className="mx-4 mb-0.5 flex  ">
                       {ele?.text ? (
                         <p
-                          className={`max-w-sm py-1.5 px-6 max-sm:py-[4px] flex items-center justify-center  max-md:px-4 max-md:text-[14px]   text-md  ${
+                          className={`max-w-xs py-1.5 px-6 max-sm:py-[4px] flex items-center justify-center  max-md:px-4 max-md:text-[14px]   text-md  ${
                             ele?.sender_id === currentUser
                               ? " bg-gradient-to-tr from-grn to-lgrn text-white rounded-r-md rounded-br-[100px] rounded-tr-[10px]  rounded-s-[100px]"
                               : "bg-gray-100 text-gray-700 rounded-3xl "
@@ -414,7 +448,7 @@ const Chate = ({
                       ) : null}
                       {ele?.image ? (
                         <img
-                          className={`max-w-xs py-0.5 rounded-lg max-md:max-w-[50%] ml-auto ${
+                          className={`max-w-xs py-0.5 rounded-lg max-md:max-w-[50%] ml-auto  ${
                             ele?.sender_id === currentUser
                               ? "bg-lgrn"
                               : "bg-slate-100"
@@ -436,11 +470,11 @@ const Chate = ({
             })}
 
             {typing?.status === UserTyping ? (
-              <div class="container py-4 absolute bottom-0">
+              <div class="container py-4  bottom-0">
                 <img
                   src={`${Emage_Profile}${ChatUser?.picture_url}`}
                   onClick={handleClick}
-                  className="w-[35px] h-[35px] max-md:w-[32px] max-md:h-[32px] ml-2  shadow-md shadow-slate-200 drop-shadow-md rounded-full border-[2px] border-white cursor-pointer "
+                  className="w-[35px] h-[35px] max-md:w-[30px] max-md:h-[30px] ml-2  shadow-md shadow-slate-200 drop-shadow-md rounded-full border-[2px] border-white cursor-pointer "
                   alt=""
                 />
                 <div className="point point1 w-2 m-[2px] ml-2   h-2 bg-lgrn  shadow-md shadow-slate-300 drop-shadow-sm "></div>
@@ -449,7 +483,7 @@ const Chate = ({
               </div>
             ) : null}
           </div>
-          {IsLiked ? (
+          {IsLiked === true ? (
             <div className="inputHeader  w-full text-center  mx-auto flex items-center  shadow-sm shadow-slate-200 drop-shadow-sm   justify-around p-3 max-md:p-1  bg-white rounded-md">
               <div className=" w-10 h-10 max-md:w-8 max-md:h-7  rounded-full  flex items-center justify-center bg-slate-100">
                 <label htmlFor="dropzone-file-message">
@@ -497,6 +531,8 @@ const Chate = ({
               </button>
             </div>
           ) : (
+            ChatUser?(
+
             <div className=" text-[11px] text-slate-400   bg-white h-20 text-center flex flex-col  items-center justify-center px-10 max-md:px-2 max-md:text-[8px] ">
               <p className="font-bold text-slate-500">
                 You Unliked <span className="text-lgrn"> {ChatUser?.name}</span>{" "}
@@ -505,11 +541,21 @@ const Chate = ({
               You unliked this profile so you can't message or call them in this
               that,and you won't recive their messages or calls.
             </div>
+            ):(
+              <div class=" rounded-md p-2  w-full text-center ">
+              <div class="animate-pulse flex space-x-4 justify-center w-full">
+                <div className="flex-1 space-y-3 items-center w-full ">
+                            <div className="h-4 bg-slate-100 rounded-3xl col-span-3 w-[30%] mx-auto"></div>
+                            <div className="h-2 bg-slate-100 rounded-3xl col-span-2 w-full mx-auto"></div>
+                      </div>
+              </div>
+            </div>
+            )
           )}
         </>
       ) : (
         <div className="h-full w-full flex flex-col items-center justify-center">
-          <img className="w-[70%] opacity-[0.5]" src={choseChat} alt="" />
+          <img className="w-[80%] opacity-[0.6]" src={choseChat} alt="" />
           <div className="opacity-50">Chose one to talk with!</div>
         </div>
       )}

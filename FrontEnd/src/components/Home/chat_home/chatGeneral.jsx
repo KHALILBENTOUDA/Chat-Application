@@ -11,8 +11,11 @@ const ChatGeneral = () => {
   const CurrentUser = useSelector((state) => state.authReducer.authData);
   const [handleNavigateRigt, sethandleNavigateRigt] = useState("");
   const [CountNotif, setCountNotif] = useState(null);
+  console.log(CurrentUser)
   return (
-    <div className=" text-tex h-full w-full  p-8 max-md:p-3 no-scrollbar bg-cardColor ">
+    <div className=" text-tex h-full w-full  p-8 max-md:p-3 no-scrollbar bg-cardColor  ">
+            <div className="absolute top-[-4%] max-md:top-[-8%] right-[0px]   w-[22rem]  max-md:w-[8rem] h-[14rem] max-sm:[7rem] rounded-full bg-[#a6ddf0d8] filter blur-[72px] max-sm:blur-[50px]  "></div>
+      <div className="absolute top-[300px] max-md:top-[130px]  left-[-8rem] max-sm:left-[-10rem]  w-[21rem] max-md:w-[12rem]  max-sm:[7rem]  h-[14rem] rounded-full bg-notifi2 filter blur-[72px]  "></div>
       {
         CurrentUser?.is_verified?(
       <div className=" mx-auto my-auto  rounded-2xl bg-cardColor  overflow-hidden relative ">
@@ -30,13 +33,12 @@ const ChatGeneral = () => {
         <NoticLocalisation />
       </div>
 
-        ):(
+        ):( 
+          <div className="w-full h-[80vh] bg-white flex items-center justify-center rounded-3xl">
 
-          <div className="w-full h-[80vh] bg-white flex items-center justify-center">
-
-      <div class="animate-spin inline-block w-8 h-8 border-[3px] border-current border-t-transparent text-lgrn rounded-full dark:text-lgrn" role="status" aria-label="loading">
-        <span class="sr-only">Loading...</span>
-      </div>
+          <div class="animate-spin inline-block w-8 h-8 border-[3px] border-current border-t-transparent text-lgrn rounded-full dark:text-lgrn" role="status" aria-label="loading">
+            <span class="sr-only">Loading...</span>
+          </div>
           </div>
         )
       }

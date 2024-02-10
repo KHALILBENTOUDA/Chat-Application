@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserPfile } from "../../Redux/Actions/ActionAuth";
 import profi from '../../assets/images/user (1).png'
+import elec from '../../assets/images/start-2.jpeg';
 
 const UserForm = () => {
   // const userData = useSelector((state) => state.authReducer.authData);
   const userData = JSON.parse(localStorage.getItem("profile"));
-
   const [message, setmessage] = useState("");
   const [error, seterror] = useState("");
   const [interests, setinterests] = useState([]);
@@ -39,21 +39,29 @@ const UserForm = () => {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(!formData.gender || !formData.age || !formData.biography || !formData.gender || !formData.pictures){
+      setmessage('you forgot to fill all the information in the form')
+    }
     const sendData = new FormData();
     sendData.append("gender", formData.gender);
     sendData.append("biography", formData.biography);
     sendData.append("pictures", formData.pictures);
-    const userID = userData.id;
+    const userID = userData.user;
     dispatch(updateUserPfile(sendData, userID, navigate));
   };
 
   return (
     <div>
       {userData ? (
-        <section className="h-[100vh] flex justify-center items-center  ">
-          <div className=""></div>
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4">
-         
+        <section className="h-[100vh] flex items-center relative  ">
+                <div className="absolute top-[-4%] max-md:top-[-8%] right-[0px]   w-[22rem]  max-md:w-[8rem] h-[14rem] max-sm:[7rem] rounded-full bg-[#a6ddf0d8] filter blur-[72px] max-sm:blur-[50px]  "></div>
+      <div className="absolute top-[300px] max-md:top-[130px]  left-[-8rem] max-sm:left-[-10rem]  w-[21rem] max-md:w-[12rem]  max-sm:[7rem]  h-[14rem] rounded-full bg-notifi2 filter blur-[72px]"></div>
+          <div className=" w-[90%] mx-auto  shadow-md  drop-shadow-sm  rounded-3xl flex justify-center items-center ">
+
+          <div className="w-[50%] max-lg:hidden">
+            <img src={elec} className="w-full rounded-3xl pl-3" alt="" />
+          </div>
+          <form onSubmit={handleSubmit} className="max-w-md  mx-auto p-6   ">
             <label htmlFor="dropzone-file-profile-compate">
                 <div class=" flex flex-col items-center">
                   <div className="w-[22%] relative">
@@ -81,12 +89,14 @@ const UserForm = () => {
         ):(
           <label
           htmlFor=""
-          className="block mb-2 max-md:mb-0.5 ml-1  text-sm font-bold  text-green-500 max-md:text-[11px] text-center w-full mt-3 "
+          className="block mb-2 max-md:mb-0.5 ml-1  text-sm font-bold  text-orange-500 max-md:text-[11px] text-center w-full mt-3 "
         >
-        Select your profile picture
         </label>
         )
        }
+
+    <h1 className={`text-red-400 bg-red-100 w-full mt-5 my-5  pl-6 text-[11px] ${message ? 'pl-7 py-2' : 'null'} max-md:text-[10px] rounded-3xl`}>{message}</h1>
+
 
         <label
           htmlFor=""
@@ -136,13 +146,14 @@ const UserForm = () => {
             <div className="w-[99%] flex justify-end">
             <button
               type="submit"
-              className="mt-4 bg-lgrn text-white rounded-full py-1 px-4 text-xs   hover:bg-grn transition duration-300"
+              className="mt-10   bg-lgrn text-white rounded-full py-2 px-7 text-sm font-bold  hover:bg-grn transition duration-300"
             >
               Next 
               <i className="fa-solid fa-angle-double-right ml-2"></i>
             </button>
             </div>
           </form>
+          </div>
         </section>
       ) : (
         <p>page not found</p>

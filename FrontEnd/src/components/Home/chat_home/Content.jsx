@@ -128,7 +128,7 @@ const Content = ({
   }, [topNotification]);
 
   return (
-    <section className="md:flex items-center justify-center no-scrollbar ">
+    <section className="md:flex items-center justify-center no-scrollbar z-50 ">
       {userData ? (
         <>
           <Left_side
@@ -152,7 +152,7 @@ const Content = ({
               handleNavigate === "profile"
                 ? "max-md:show"
                 : "max-md:hidden"
-            } max-xg:show max-xl:w-full   max-md:w-[100%]  bg-white w-[48%] h-[83vh] mt-1 max-sm:h-[88vh]  max-md:h-[90vh]  relative flex flex-col justify-between rounded-md   `}
+            } max-lg:show max-xl:w-full   max-md:w-[100%]  bg-white w-[48%] h-[83vh] mt-1 max-sm:h-[88vh]  max-md:h-[90vh]  relative flex flex-col justify-between rounded-md   `}
           >
             <Routes>
               <Route

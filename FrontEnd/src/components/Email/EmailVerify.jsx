@@ -11,22 +11,13 @@ const Email = () => {
   useEffect(() => {
     const handleAuth = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/api/v1/${id}/verify/${token}`, {
-          withCredentials: true,
-        });
-
-        if (response.data.status === "success") {
+        const response = await axios.get(`${BASE_URL}/api/v1/${id}/verify/${token}`);
           setValidURL(true);
-        } else {
-          setValidURL(false);
-        }
       } catch (err) {
-        setValidURL(false);
       }
     };
-
     handleAuth();
-  }, [id, token]);
+  }, [id,token]);
 
   return (
     <section className='w-[80%] mx-auto h-[50vh] max-sm:h-[70vh] flex items-center justify-center'>

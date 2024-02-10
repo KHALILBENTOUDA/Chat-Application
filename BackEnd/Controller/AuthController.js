@@ -62,20 +62,21 @@ const register = AsyncHandler(async (req, res, next) => {
             
 
               <main style="margin-top: 2rem;color:white">
-              <h2 style="text-gray-700 dark:text-gray-200">Hi ${req.body.name},</h2>
+              <h1 style="text-gray-700 dark:text-gray-200">Hi ${req.body.name},</h1>
       
-              <p style="margin-top: 0.5rem; line-height: 1.5rem;font-weight: 600;">
+              <p style="margin-top: 0.5rem; line-height: 1.5rem;font-weight: 600; font-size: 0.875rem;color:#eee;">
                    Verifiy your email address 
               </p>
       
-              <p style="mt-4 leading-loose text-gray-600 dark:text-gray-300">
+              <p style="color:#eee;">
                   This code will only be valid for the next 5 minutes. If the code does not work, you can use this login verification link:
               </p>
               
-              <button   style="padding: 0.5rem 1.5rem; margin-top: 1rem; font-size: 0.875rem; font-weight: 500; text-transform: capitalize; transition: background-color 0.3s; background-color: #b849eb; border-radius:20px; border:none;  color: white;">
-                  <a style="color:white"  href=${link}> Verify email</a>
-              </button>
-            
+              <button style="padding: 0.5rem 1.5rem; margin-top: 1rem; font-weight: 500; text-transform: capitalize; transition: background-color 0.3s; background-color: #b849eb; border-radius: 20px; border: none; color: white;">
+              <a href="${link}" style="color: white; text-decoration: none; font-size: 13px; display: block;">
+                Verify email
+              </a>
+            </button> 
               
               <p style="margin-top: 2rem; color: #ddd;">
                   Thanks, <br>
@@ -113,12 +114,17 @@ const login = AsyncHandler(async (req, res, next) => {
   }
 
   // validate email
-  const ValidateUser = "SELECT email from User";
-  if (!ValidateUser) {
-    return next(
-      new AppErrorClass(401, "Sorry This Email Is Exist", statusText.FAIL)
-    );
-  }
+  // const ValidateUser = "SELECT email from User WHERE email = ?";
+
+  // db.query(ValidateUser,[email],async(err,result)=>{
+
+  // })
+
+  // if (ValidateUser) {
+  //   return next(
+  //     new AppErrorClass(401, "Sorry This Email Is Exist", statusText.FAIL)
+  //   );
+  // }
 
 
   const results = await new Promise((resolve, reject) => {
@@ -126,8 +132,8 @@ const login = AsyncHandler(async (req, res, next) => {
       "SELECT * FROM User WHERE email = ?",
       [email],
       (error, results) => {
-        if (error) {
-          reject(new AppErrorClass(500, error.message, statusText.ERORR));
+        if (results.length === 0) {
+          reject(new AppErrorClass(500,"Sorry This Email Is Not  Existed", statusText.ERORR));
         } else {
           resolve(results[0]);
         }
@@ -176,12 +182,15 @@ const login = AsyncHandler(async (req, res, next) => {
                                           </p>
                                   
                                           <p style="mt-4 leading-loose text-gray-600 dark:text-gray-300">
-                                              This code will only be valid for the next 5 minutes. If the code does not work, you can use this login verification link:
+                                              This code will only be valid for the next 5 minutes. If the code does not work, you can use this login verification link
                                           </p>
                                           
-                                          <button   style="padding: 0.5rem 1.5rem; margin-top: 1rem; font-size: 0.875rem; font-weight: 500; text-transform: capitalize; transition: background-color 0.3s; background-color: #b849eb; border-radius:20px; border:none;  color: white;">
-                                              <a style="color:white"  href=${link}> Verify email</a>
-                                          </button>
+                                          <button style="padding: 0.5rem 1.5rem; margin-top: 1rem; font-weight: 500; text-transform: capitalize; transition: background-color 0.3s; background-color: #b849eb; border-radius: 20px; border: none; color: white;">
+                                          <a href="${link}" style="color: white; text-decoration: none; font-size: 13px; display: block;">
+                                            Verify email
+                                          </a>
+                                        </button>
+                                        
                                         
                                           
                                           <p style="margin-top: 2rem; color: #ddd;">
@@ -291,6 +300,8 @@ const VerifyToken=AsyncHandler(async (req,res,next) => {
 const ComplateProfile = AsyncHandler(async (req, res, next) => {
   const{gender,biography,profileComplete,age}=req.body
   const id = req.params.id;
+
+
   req.body.pictures = req.file.filename;
   
   const sql_Emage = 'INSERT INTO pictures (user_id, picture_url, is_profile_picture) VALUES (?, ?, ?)';
@@ -302,7 +313,6 @@ const ComplateProfile = AsyncHandler(async (req, res, next) => {
   db.query(sql_Profile,[gender,biography,'1',age,id],(err,results)=>{
     if(err) 
     {
-
       return next( new AppErrorClass(401,'Internal server',statusText.FAIL))   
     }
   })
@@ -321,7 +331,6 @@ const ComplateProfile = AsyncHandler(async (req, res, next) => {
         if(err) 
         {
           return next( new AppErrorClass(401,'Internal server',statusText.FAIL))   
-    
         }
         res.status(200).json({
           status:statusText.SUCCESS,
@@ -333,7 +342,6 @@ const ComplateProfile = AsyncHandler(async (req, res, next) => {
         if(err) 
         {
           return next( new AppErrorClass(401,'Internal server',statusText.FAIL))   
-    
         }
         res.status(200).json({
           status:statusText.SUCCESS,

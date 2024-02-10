@@ -76,26 +76,26 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
     fetchUser();
   }, [profileInfo.id, CurrentUser.id]);
 
-  const handlelike = async (idC_Liked) => {
-    try {
-      const likeData = {
-        liked_id: profileInfo.id,
-        Currend_id: idC_Liked,
-      };
-      const res = await like(likeData);
-      setlikesCount(res.data.data);
-      setIsLiked(true);
-      const notificaion = {
-        sender_id: profileInfo.id,
-        receiver_id: idC_Liked,
-        content: `has like you`,
-      };
-      dispatch(NewNotification(notificaion));
-    } catch (e) {
-      console.log(e);
-    }
+const handlelike = async (idC_Liked) => {
+      try {
+        const likeData = {
+          liked_id: profileInfo.id,
+          Currend_id: idC_Liked,
+        };
+        const res = await like(likeData);
+        setlikesCount(res.data.data);
+        setIsLiked(true);
+        const notificaion = {
+          sender_id: profileInfo.id,
+          receiver_id: idC_Liked,
+          content: `has like you`,
+        };
+        dispatch(NewNotification(notificaion));
+      } catch (e) {
+        console.log(e);
+      }
   };
-
+  
   const handleUnlike = async (idC_Liked) => {
     try {
       const likeData = {
@@ -270,22 +270,22 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
   // cul only birthdate
 
   const age = new Date(CurrentUser.birthdate).toISOString()?.split("T")[0];
-
+console.log(profileInfo)
   const scroll = useRef();
   const idC_Liked = CurrentUser.id;
   return (
     <div ref={scroll} className="overflow-y-scroll no-scrollbar ">
       <div className=" ">
         <div className=" w-full relative">
-          <div className="h-10 w-full bg-white absolute opacity-20 shadow-xl  "></div>
+          <div className="h-10 w-full bg-white absolute opacity-20   shadow-md  "></div>
           <i
             onClick={() => sethandleNavigate("leftSide")}
             className="fa-solid md:hidden  fa-angle-left text-[20px] flex items-center justify-center  cursor-pointer text-white  absolute m-1 w-7 h-7 rounded-full "
           ></i>
-          {CurrentUser.Covers ? (
+          {CurrentUser.Covers || cover ? (
             <img
               src={`${Emage_Cover}${cover || CurrentUser.Covers}`}
-              className="w-full rounded-md h-[300px] max-md:h-[200px] shadow-xl bg-slate-200 "
+              className="w-full rounded-md h-[300px] max-md:h-[200px] shadow-xl bg-slate-100 "
               alt=""
             />
           ) : (
@@ -319,7 +319,7 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
               <div className=" relative rounded-full shadow-md shadow-slate-100 drop-shadow-sm  ">
                 <img
                   src={
-                    CurrentUser.picture_url
+                    CurrentUser.picture_url || newEmage
                       ? `${Emage_Profile}${newEmage || CurrentUser.picture_url}`
                       : profile
                   }

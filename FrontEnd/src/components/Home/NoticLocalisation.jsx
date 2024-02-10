@@ -36,6 +36,9 @@ const NoticLocalisation = () => {
               `${BASE_URL}/api/v1/location`,
               locaitondata
             );
+
+            console.log(res);
+
             if (res.status === "success") {
             }
           } catch (axiosError) {}
@@ -71,6 +74,7 @@ const NoticLocalisation = () => {
               `${BASE_URL}/api/v1/location`,
               locaitondata
             );
+            console.log(res);
             if (res.status === "success") {
             }
           } catch (axiosError) {}
@@ -92,9 +96,11 @@ const NoticLocalisation = () => {
     return null;
   }
 
+  console.log(profileInfo)
+  
   return (
     <>
-      {profileInfo.UserShoies === 0 ? (
+      {profileInfo.UserShoies === null ? (
         <div className="noticLocation h-[200px] rounded-2xl  bg-white  shadow-md shadow-slate-300 ">
           <div className="w-full flex justify-end p-2 ">
             <i

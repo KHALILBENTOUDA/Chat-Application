@@ -30,6 +30,7 @@ import EmailSend from "../components/Email/EmailSend";
 const RouteAll = () => {
   const userData = useSelector((state) => state.authReducer.authData); 
   const profileInfo = JSON.parse(localStorage.getItem("profile"));
+  console.log(userData)
   return (
     <BrowserRouter>
         {!userData && <Navbar />}

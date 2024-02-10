@@ -69,9 +69,13 @@ const Notificaiton = ({ sethandleNavigate, setCountNotif }) => {
 
   // }, [notifications, AllUSERS, profileInfo.id]);
 
+
+  console.log(combinedData)
+
   const handleIsRead = async (id) => {
     try {
       const res = await siReadApi({ id: id });
+      console.log(res)
       setIsRead((prevIds) => [...prevIds, id]);
     } catch (e) {
       console.log(e);
@@ -79,10 +83,10 @@ const Notificaiton = ({ sethandleNavigate, setCountNotif }) => {
   };
 
   const navigate = useNavigate();
-  const handleClick = (user) => {
+  const handleClick = (not) => {
     navigate('/profile')
-    dispatch({ type: "GET_USERS_DATA", data:user });
-    handleIsRead(user.id);
+    dispatch({ type: "GET_USERS_DATA", data:not.senderInfo });
+    handleIsRead(not.id);
   };
 
   const reversedData = combinedData ? [...combinedData].reverse() : [];
@@ -107,11 +111,10 @@ const Notificaiton = ({ sethandleNavigate, setCountNotif }) => {
               const sender = not.senderInfo || {}; // Use senderInfo from combined data
               const senderPhotos =
                 AllUSERS.find((user) => user.id === not.sender_id) || {};
-
               return (
                 <li
                   key={not.id}
-                  onClick={() => handleClick(not.senderInfo)}
+                  onClick={() => handleClick(not)}
                   className={`flex w-full  items-center justify-between py-2 my-1 px-6 max-md:px-3 rounded-md ${
                     IsRead.includes(not.id) || not.is_Read
                       ? "opacity-40"

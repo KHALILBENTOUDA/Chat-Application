@@ -42,22 +42,18 @@ const sendVerifyEmail = async (options) => {
             max-width:3xl;
             hight:100%;
             margin: auto;
-            color: #333;
+            color: #ddd;
             background-color:black;
+            font-family:sans-serif;
             border-radius:10px;
             padding: 25px;
-           
           }
-    
           .header{
             text-align: center;
           }
           .header img {
             width: 160px;
           }
-
-
-    
         
         </style>
       </head>
@@ -87,12 +83,12 @@ const sendVerifyEmail = async (options) => {
     </html>
     
       `,
-      attachments: [{
-        filename: '2-removebg-preview.png',
-        path:imagePath,
-        encoding: 'base64', // You might need to adjust the encoding
-        cid: 'myImg',
-      }]
+      attachments: [
+        {
+          path: imagePath,
+          cid: 'myImg' 
+        }
+      ]
     };
 
     // Actually send the email

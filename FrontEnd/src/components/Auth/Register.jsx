@@ -49,6 +49,8 @@ const handleSubmit = async(e)=>{
   return (
     <div>
       <section className="bg-white my-10  text-tex flex   flex-col items-center h-[120vh] max-md:h-[90vh]  justify-center   ">
+      <div className="fixed top-[-4%] max-md:top-[-8%] right-[0px]   w-[22rem]  max-md:w-[8rem] h-[14rem] max-sm:[7rem] rounded-full bg-[#a6ddf0d8] filter blur-[72px] max-sm:blur-[50px]   "></div>
+      <div className="fixed top-[300px] max-md:top-[130px]  left-[-8rem] max-sm:left-[-10rem]  w-[21rem] max-md:w-[12rem]  max-sm:[7rem]  h-[14rem] rounded-full bg-notifi2 filter blur-[72px]"></div>
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 h-full w-full ">
          
           <div className="w-full bg-white rounded-3xl   shadow dark:border md:mt-0 sm:max-w-md xl:p-0 ">

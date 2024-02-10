@@ -12,11 +12,18 @@ const creatChat=AsyncHandler(async(req,res,next)=>{
       const chatData={
             members:JSON.stringify([sender,resever])
       }
+
+//      const sql_create_chat = 'INSERT INTO Chat (members) VALUES (?)'
+     // for Railway
+
      const sql_create_chat = 'INSERT INTO Chat (members) VALUES (?)'
+
      const sql_getChat ='SELECT * FROM Chat WHERE JSON_CONTAINS(members, ?) AND JSON_CONTAINS(members, ?);'
      const value_chat = [chatData.members]
 
+
      db.query(sql_create_chat,value_chat,(err,result)=>{
+      console.error(err)
       if(err) return new AppErrorClass(500, err, statusText.FAIL)
       db.query(sql_getChat,[sender,resever],(err,result)=>{
             if(err) return new AppErrorClass(500,err, statusText.FAIL)

@@ -63,9 +63,11 @@ const getNotifications=AsyncHandler(async(req,res,next)=>{
 
 const isReadnotification=AsyncHandler(async(req,res,next)=>{
       const {id} = req.body;
-      const getNotificatons = 'UPDATE  notifications SET is_Read=1  WHERE id= ?';
+      const getNotificatons = 'UPDATE notifications SET is_Read = 1  WHERE id = ? ';
             db.query(getNotificatons,[id], (err, result) => {
+              console.error(err);
             if (err) return new AppErrorClass(500, err, statusText.FAIL);
+
             res.status(201).json({ 
                   status:statusText.SUCCESS,
                   is_Read:true,

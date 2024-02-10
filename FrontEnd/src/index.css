@@ -46,11 +46,11 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: 'CustomFont';
     
 }
 body{
     background-color: white;
-    font-family: 'CustomFont';
     position: relative;
 }
 

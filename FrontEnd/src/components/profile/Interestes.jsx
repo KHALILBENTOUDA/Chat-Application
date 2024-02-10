@@ -60,8 +60,10 @@ const Interestes = () => {
   };
 
   return (
-    <section className="w-[70%] mx-auto text-center  h-[100vh] flex justify-center items-center   ">
-      <form action="" method="post" onSubmit={handleSubmit} className="w-full">
+    <section className="w-[70%] mx-auto max-sm:w-full text-center  h-[100vh] flex justify-center items-center   ">
+            <div className="absolute top-[-4%] max-md:top-[-8%] right-[0px]   w-[22rem]  max-md:w-[8rem] h-[14rem] max-sm:[7rem] rounded-full bg-[#a6ddf0d8] filter blur-[72px] max-sm:blur-[50px]  "></div>
+      <div className="absolute top-[300px] max-md:top-[130px]  left-[-8rem] max-sm:left-[-10rem]  w-[21rem] max-md:w-[12rem]  max-sm:[7rem]  h-[14rem] rounded-full bg-notifi2 filter blur-[72px]"></div>
+      <form action="" method="post" onSubmit={handleSubmit} className="w-full bg- p-10 bg-cardColor  rounded-3xl">
         <ul class="grid  gap-6 md:grid-cols-3 max-md:gap-3 ">
           {interests.map((ele) => {
             return (
@@ -78,10 +80,9 @@ const Interestes = () => {
                 <label
                   for={ele.interest_id}
                   htmlfor="interests"
-                  class="inline-flex items-center justify-between w-full py-2 px-4    text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-white dark:border-gray-100 peer-checked:border-lgrn hover:text-gray-200 dark:peer-checked:text-lgrn peer-checked:text-lgrn hover:bg-gray-50  dark:bg-gray-200 dark:hover:bg-lgrn"
+                  class="inline-flex items-center justify-between w-full py-2 px-4    text-gray-500 bg-white border-2 border-slate-100 rounded-2xl cursor-pointer   peer-checked:border-lgrn  dark:peer-checked:text-lgrn peer-checked:text-white hover:bg-gray-50   "
                 >
                   <div class="flex">
-                  
                     <div class="w-full text-lg max-md:text-xs  font-semibold px-2">
                       {ele.interest_name}
                     </div>
@@ -95,7 +96,7 @@ const Interestes = () => {
         <div className="w-[99%] flex justify-end">
         <button
               type="submit"
-              className="mt-4 bg-lgrn text-white rounded-full py-1 px-4 text-xs   hover:bg-grn transition duration-300"
+              className="mt-14 bg-lgrn text-white rounded-full  py-2 px-7 font-bold text-sm   hover:bg-grn transition duration-300"
             >
               Next 
               <i className="fa-solid fa-angle-double-right ml-2"></i>

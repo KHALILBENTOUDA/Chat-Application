@@ -38,7 +38,25 @@ const Seggentions = ({
             </>
           ))
         ) : (
-          <p>Loading...</p>
+          <div class=" rounded-md p-2 max-w-sm w-full mx-auto">
+          <div class="animate-pulse flex space-x-4">
+          <div class="rounded-full bg-slate-200 h-10 w-10"></div>
+          <div class="flex-1 space-y-6  items-center">
+            <div class="space-y-3">
+            <div class="grid grid-cols-5 gap-4">
+                <div class="h-3 bg-slate-200 rounded-3xl col-span-3"></div>
+                <div class="h-2 bg-white rounded-3xl col-span-1"></div>
+
+                <div class="h-2 bg-slate-200 rounded-3xl col-span-1"></div>
+              </div>
+              <div class="grid grid-cols-5 gap-4">
+                <div class="h-2 bg-slate-200 rounded-3xl col-span-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+         
         )}
       </ul>
     </>

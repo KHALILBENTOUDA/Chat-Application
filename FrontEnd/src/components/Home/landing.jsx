@@ -1,4 +1,3 @@
-
 import ChatGeneral from "./chat_home/chatGeneral";
 import { GetCurrentUser } from "../../Redux/Actions/ActionUser";
 import { logout } from "../../Redux/Actions/ActionAuth";
@@ -13,26 +12,26 @@ const Landing = () => {
   const CurrentUser = useSelector((state) => state.authReducer.authData);
   const [location, setlocation] = useState(null)
   const dispatch = useDispatch();
-
   const token = localStorage.getItem("token");
 
   useEffect(() => {
     dispatch(GetCurrentUser(token));
-  }, []);
+  },[]);
 
   useEffect(() => {
     dispatch(getAllUsers(token))
-  }, [])
+  },[token])
 
-
+console.log(profileInfo)
   return (
-    <div className="">
+    <div className="relative">
       {
       token?(
+
         CurrentUser?(
         <ChatGeneral/> 
           ):(
-          <div className="w-full h-[90vh] bg-white flex items-center justify-center">
+          <div className="w-full h-[90vh] bg-white flex items-center justify-center rounded-3xl">
           <div class="animate-spin inline-block w-8 h-8 border-[3px] border-current border-t-transparent text-lgrn rounded-full dark:text-lgrn" role="status" aria-label="loading">
             <span class="sr-only">Loading...</span>
           </div>

@@ -19,6 +19,8 @@ const getUserLoaciton=AsyncHandler(async(req,res,next)=>{
         UserShoies=VALUES(UserShoies);
     `;
 
+
+
     if (data.results && data.results.length > 0) {
           const locationDetails = {
                 country: data.results[0].components.country,
