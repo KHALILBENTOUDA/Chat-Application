@@ -49,7 +49,7 @@ const register = AsyncHandler(async (req, res, next) => {
             if (tokenInsertError) return next(new AppErrorClass(500, 'Error inserting verification token', statusText.ERROR));
             
             // Send verification email
-            const link = `${req.protocol}://localhost:5173/user/${user_id}/verify/${verificationToken}`;
+            const link = `https://matcha-avzq.onrender.com/${user_id}/verify/${verificationToken}`;
             
 
             // //
@@ -106,7 +106,7 @@ const register = AsyncHandler(async (req, res, next) => {
 
 const login = AsyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
-
+  console.log(req.body)
   if (!email || !password) {
     return next(
       new AppErrorClass(401, "Email Or Password are Required", statusText.FAIL)
@@ -127,11 +127,14 @@ const login = AsyncHandler(async (req, res, next) => {
   // }
 
 
+
+
   const results = await new Promise((resolve, reject) => {
     db.query(
       "SELECT * FROM User WHERE email = ?",
       [email],
       (error, results) => {
+        if (error) return next(new AppErrorClass(400,error.message, statusText.FAIL));
         if (results.length === 0) {
           reject(new AppErrorClass(500,"Sorry This Email Is Not  Existed", statusText.ERORR));
         } else {
@@ -167,7 +170,7 @@ const login = AsyncHandler(async (req, res, next) => {
                           return next( new AppErrorClass(401,'Error inserting verification toke',statusText.FAIL))   
                         }
                         try{
-                          const link =`${req.protocol}://localhost:5173/user/${user.id}/verify/${verificationToken}`
+                          const link =`https://matcha-avzq.onrender.com/user/${user.id}/verify/${verificationToken}`
                               await sendVerifyEmail(
                                     {
                                           email:user.email,
@@ -202,12 +205,14 @@ const login = AsyncHandler(async (req, res, next) => {
                                           `
                                     }
                               )
+                              console.log(results)
                               res.status(201).json({
                                 status: statusText.SUCCESS,
                                 message: "An Email has been sent to your account please check your email",
                               });
             
                         }catch(e){
+
                           return next( new AppErrorClass(401,'Check validate your email',statusText.FAIL))   
                         }
                   })

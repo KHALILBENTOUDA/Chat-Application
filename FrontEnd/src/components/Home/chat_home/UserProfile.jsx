@@ -270,7 +270,6 @@ const handlelike = async (idC_Liked) => {
   // cul only birthdate
 
   const age = new Date(CurrentUser.birthdate).toISOString()?.split("T")[0];
-console.log(profileInfo)
   const scroll = useRef();
   const idC_Liked = CurrentUser.id;
   return (

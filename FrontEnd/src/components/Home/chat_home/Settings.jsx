@@ -29,8 +29,24 @@ const Settings = ({ sethandleNavigateRigt }) => {
             className="bg-white opacity-70 text-tex font-semibold  cursor-pointer transition duration-200 ease-in-out   flex py-2.5 items-center  px-4 hover:bg-white shadow-sm drop-shadow-sm  text-sm max-md:text-xs  shadow-slate-200 rounded-md hover:shadow-lg my-2 mx-1 hover:opacity-100  "
           >
             <i className="fa-solid fa-eye pr-3"></i>
-            Viewd
+            Viewed
           </li>
+          <li
+            onClick={() => navigate("/edit_profile")}
+            className="bg-white opacity-70 text-tex font-semibold  cursor-pointer transition duration-200 ease-in-out   flex py-2.5 items-center  px-4 hover:bg-white shadow-sm drop-shadow-sm  text-sm max-md:text-xs  shadow-slate-200 rounded-md hover:shadow-lg my-2 mx-1 hover:opacity-100  "
+          >
+            <i className="fa-solid fa-edit pr-3"></i>
+            Profile Edit
+          </li>
+          {/* <li
+            // onClick={() => navigate("/edit_profile")}
+            className="bg-white opacity-70 text-tex font-semibold  cursor-pointer transition duration-200 ease-in-out   flex py-2.5 items-center  px-4 hover:bg-white shadow-sm drop-shadow-sm  text-sm max-md:text-xs  shadow-slate-200 rounded-md hover:shadow-lg my-2 mx-1 hover:opacity-100  "
+          >
+            <i className="fa-regular  fa-moon pr-3"></i>
+            Dark Mood
+            
+          </li> */}
+
         </ul>
         <div
           className="text-center absolute ml-5  w-[90%] translate-x-[50% -50%]  bg-red-500 shadow-md cursor-pointer  font-bold  p-2 my-2  rounded-full text-sm  text-white  bottom-0 "

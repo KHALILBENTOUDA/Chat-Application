@@ -101,19 +101,19 @@ const NoticLocalisation = () => {
   return (
     <>
       {profileInfo.UserShoies === null ? (
-        <div className="noticLocation h-[200px] rounded-2xl  bg-white  shadow-md shadow-slate-300 ">
-          <div className="w-full flex justify-end p-2 ">
+        <div className="noticLocation h-[200px] max-sm:w-[300px]  rounded-2xl  bg-white  shadow-md shadow-slate-300 ">
+          <div className="w-full  flex justify-end p-2 ">
             <i
-              className="fa-solid fa-close text-lg rounded-full bg-slate-200 w-8 h-8 flex items-center justify-center cursor-pointer "
+              className="fa-solid fa-close text-lg  max-sm:text-md  rounded-full bg-slate-200 w-8 h-8 flex items-center justify-center cursor-pointer "
               onClick={handleClose}
             ></i>
           </div>
           <div className="w-full text-center">
-            <h1 className="text-xl font-bold text-black">
+            <h1 className="text-xl max-sm:text-lg  font-bold text-black">
               <i className="fa-solid fa-location-dot text-lgrn"></i>{" "}
               LOCALISATION
             </h1>
-            <p className="text-[9px] p-3">
+            <p className="text-[9px] max-sm:text-[8px]  p-3">
               To unlock the full potential of our app and enjoy all features
               seamlessly, we kindly ask for your permission to access your
               location. Rest assured, your privacy is our priority, and we will
@@ -124,13 +124,13 @@ const NoticLocalisation = () => {
           </div>
           <div className="absolute bottom-0 flex gap-4 p-3 items-center justify-center w-full">
             <button
-              className="bg-cardColor py-1.5 px-8 text-sm font-bold text-lgrn rounded-full"
+              className="bg-cardColor py-1.5 px-8 text-sm  max-sm:text-xs font-bold text-lgrn rounded-full"
               onClick={handleClose}
             >
               Cancel
             </button>
             <button
-              className="py-1.5 px-8 text-sm font-bold bg-lgrn  text-white  rounded-full"
+              className="py-1.5 px-8 text-sm font-bold bg-lgrn  max-sm:text-xs  text-white  rounded-full"
               onClick={handleAllow}
             >
               Allow

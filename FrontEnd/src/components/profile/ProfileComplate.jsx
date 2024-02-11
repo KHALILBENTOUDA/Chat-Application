@@ -41,13 +41,14 @@ const UserForm = () => {
     e.preventDefault();
     if(!formData.gender || !formData.age || !formData.biography || !formData.gender || !formData.pictures){
       setmessage('you forgot to fill all the information in the form')
+    }else{
+      const sendData = new FormData();
+      sendData.append("gender", formData.gender);
+      sendData.append("biography", formData.biography);
+      sendData.append("pictures", formData.pictures);
+      const userID = userData.user;
+      dispatch(updateUserPfile(sendData, userID, navigate));
     }
-    const sendData = new FormData();
-    sendData.append("gender", formData.gender);
-    sendData.append("biography", formData.biography);
-    sendData.append("pictures", formData.pictures);
-    const userID = userData.user;
-    dispatch(updateUserPfile(sendData, userID, navigate));
   };
 
   return (

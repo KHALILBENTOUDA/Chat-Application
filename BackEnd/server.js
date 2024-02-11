@@ -6,9 +6,9 @@ const path = require("node:path");
 const cors = require("cors");
 const io = require('socket.io')(8800, {
     cors: {
-      origin: "http://localhost:5173",
+      origin: "https://matcha-avzq.onrender.com",
     }
-  });
+  }); 
   
 const http = require('http');
 const AuthRoutes = require("./Routes/authRoutes");
@@ -64,7 +64,7 @@ io.on("connection", (socket) => {
 
 // Middleware setup
 app.use(cors({
-  origin:['http://localhost:5173'],
+  origin:['https://matcha-avzq.onrender.com'],
   credentials:true
 }));  
 app.use(express.json());
@@ -83,7 +83,7 @@ app.use('/api/v1/message',MessageRoutes)
 app.use('/api/v1/view',ViewRoutes)
 app.use('/api/v1/Emages',EmagesRoutes)
 app.use('/api/v1/notification',notificationRoute)
-app.use('/uploads',express.static(path.join(__dirname, 'uploads')))
+app.use('/uploads',express.static(path.join(__dirname, 'Uploads')))
 
 // Routes not found 
 app.all('*',(req,res,next)=>{

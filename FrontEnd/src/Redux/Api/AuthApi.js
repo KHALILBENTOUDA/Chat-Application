@@ -16,4 +16,4 @@ export const userInterestsAPI = (userID, sendData) => {
       }, });
     };
 
-export const UpdateUser=(userId,formData)=>API.put(`update/${userId}`,formData,{withCredentials:true})
+export const UpdateUser=(userId,formData)=>API.put(`update/${userId}`,formData)

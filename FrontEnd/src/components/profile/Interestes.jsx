@@ -60,10 +60,10 @@ const Interestes = () => {
   };
 
   return (
-    <section className="w-[70%] mx-auto max-sm:w-full text-center  h-[100vh] flex justify-center items-center   ">
+    <section className="w-[70%] mx-auto max-sm:w-full text-center  h-[100vh] flex justify-center items-center relative  ">
             <div className="absolute top-[-4%] max-md:top-[-8%] right-[0px]   w-[22rem]  max-md:w-[8rem] h-[14rem] max-sm:[7rem] rounded-full bg-[#a6ddf0d8] filter blur-[72px] max-sm:blur-[50px]  "></div>
       <div className="absolute top-[300px] max-md:top-[130px]  left-[-8rem] max-sm:left-[-10rem]  w-[21rem] max-md:w-[12rem]  max-sm:[7rem]  h-[14rem] rounded-full bg-notifi2 filter blur-[72px]"></div>
-      <form action="" method="post" onSubmit={handleSubmit} className="w-full bg- p-10 bg-cardColor  rounded-3xl">
+      <form action="" method="post" onSubmit={handleSubmit} className="w-full p-10 bg-cardColor max-sm:mt-10  rounded-3xl">
         <ul class="grid  gap-6 md:grid-cols-3 max-md:gap-3 ">
           {interests.map((ele) => {
             return (

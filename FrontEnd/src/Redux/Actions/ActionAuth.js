@@ -8,7 +8,7 @@ export const login = (formData, navigate) => async(dispatch) => {
     const response = await AuthApi.login(formData);
     localStorage.setItem("token", response.data.token);
     dispatch({ type: "AUTH_SUCCESS",data:response.data.user, status:response.data.status, message:response.data.message ,token:response.data.token });
-
+    
     console.log(response.data)
     const hasCompleted = response.data.user.profilecomplate;
     console.log(hasCompleted)

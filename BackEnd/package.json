@@ -4,7 +4,9 @@
   "description": "course to learn node js ",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "build":""
+
   },
   "author": "khalil ben touda",
   "license": "ISC",

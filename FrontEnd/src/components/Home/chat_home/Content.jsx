@@ -56,7 +56,8 @@ const Content = ({
   }, [userData]);
 
   useEffect(() => {
-    socket.current = io("http://localhost:8800");
+    // socket.current = io("http://localhost:8800");
+    const socket = io("https://matcha-api-szde.onrender.com");
     socket.current.emit("new_user", CurrentUserId);
     socket.current.on("get_users", (users) => {
       setOnlineUsers(users);

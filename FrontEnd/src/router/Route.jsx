@@ -30,6 +30,8 @@ import EmailSend from "../components/Email/EmailSend";
 const RouteAll = () => {
   const userData = useSelector((state) => state.authReducer.authData); 
   const profileInfo = JSON.parse(localStorage.getItem("profile"));
+  const token =localStorage.getItem("token");
+  console.log(token)
   console.log(userData)
   return (
     <BrowserRouter>
@@ -43,8 +45,8 @@ const RouteAll = () => {
         </Route>
         
       
-        {userData &&  <Route path={`/interests`} element={<Interestes/>} />}
-        {userData &&  <Route path="/profileComplete" element={<ProfileComplate/>}/>}
+        {token &&  <Route path={`/interests`} element={<Interestes/>} />}
+        {token &&  <Route path="/profileComplete" element={<ProfileComplate/>}/>}
         {!userData &&  <Route path="/Auth/register" element={ <Register /> } />}
         {!userData &&   <Route path="/Auth/login" element={<SignIn/> } /> }
 
