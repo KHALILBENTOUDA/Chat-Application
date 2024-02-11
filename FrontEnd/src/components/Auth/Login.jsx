@@ -18,7 +18,6 @@ const SignIn = () => {
     password: "",
   });
 
-  console.log(loading)
 
   useEffect(() => {
     dispatch({ type: "STOPLOADING",loading:false });
