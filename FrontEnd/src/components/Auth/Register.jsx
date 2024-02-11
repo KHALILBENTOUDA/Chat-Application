@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { register } from "../../Redux/Actions/ActionAuth";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,13 +11,20 @@ function Register() {
   
   const errorMessage = useSelector((state) => state.authReducer.message);
   const status = useSelector((state) => state.authReducer.status);
+  const loading = useSelector((state) => state.authReducer.loading);
+  const dispatch=useDispatch()
 
+  console.log(loading)
   const [data, setdata] = useState({
     name:"",
     email:"",
     password:"",
     confirmPassword:""
 })
+
+useEffect(() => {
+  dispatch({ type: "STOPLOADING",loading:false });
+}, [])
 
 const [error, seterror] = useState("")
   const inputs=[
@@ -35,7 +42,6 @@ const [error, seterror] = useState("")
   }
   
 const navigate=useNavigate()
-const dispatch=useDispatch()
 
 const handleSubmit = async(e)=>{
   e.preventDefault()
@@ -99,7 +105,18 @@ const handleSubmit = async(e)=>{
                     <label htmlFor="terms" className="font-light text-tex text-[10px]  max-sm:text-[9px] ">I accept the <a className="font-medium text-primary-600 hover:underline dark:text-primary-500 text-lgrn" href="#">Terms and Conditions</a></label>
                   </div>
                 </div>
-                <button type="submit" className=" mt-4 bg-lgrn text-white rounded-full w-full h-9 mb-4  max-md:h-8 max-md:text-xs shadow-md drop-shadow-md  hover:bg-grn transition duration-300">Create New Acount</button>
+                <button type="submit" className="flex items-center justify-center mt-4 bg-lgrn text-white rounded-full w-full h-9 mb-4  max-md:h-8 max-md:text-xs shadow-md drop-shadow-md  hover:bg-grn transition duration-300">
+                {loading ? (
+                    <div
+                      class="animate-spin   inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-white rounded-full dark:text-white"
+                      role="status"
+                      aria-label="loading"
+                    ></div>
+                    ) : (
+                    "Create New Acount"
+
+                  )}
+                </button>
                 <p className="text-sm  max-sm:text-[11px]   font-light text-gray-500 dark:text-gray-400">
                   Already have an account? <Link to="/auth/login" className="font-medium text-primary-600 hover:underline text-lgrn ">Login</Link>
                 </p>

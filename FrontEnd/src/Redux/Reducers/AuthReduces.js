@@ -7,7 +7,8 @@ const authReducer=(state={authData:null,loading:false,error:false,message:null,s
                   return {...state,authData:action.data,loading:false,error:false,status:action.status ,message:action.message ,token:action.token}
             case "AUTH_ERROR":
                   return {...state,message:action.message,loading:false,error:true ,status:action.status}
-            
+            case "STOPLOADING":
+                  return {...state,loading:action.loading}
             case "LOG_OUT":
                   localStorage.clear()
                   return {...state,authData:null,loading:false,error:false,message:null}

@@ -17,23 +17,18 @@ const Landing = () => {
   useEffect(() => {
     dispatch(GetCurrentUser(token));
   },[]);
-
   useEffect(() => {
     dispatch(getAllUsers(token))
   },[token])
-
-console.log(profileInfo)
   return (
     <div className="relative">
       {
       token?(
-
-        CurrentUser?(
+        CurrentUser || profileInfo?(
         <ChatGeneral/> 
           ):(
           <div className="w-full h-[90vh] bg-white flex items-center justify-center rounded-3xl">
           <div class="animate-spin inline-block w-8 h-8 border-[3px] border-current border-t-transparent text-lgrn rounded-full dark:text-lgrn" role="status" aria-label="loading">
-            <span class="sr-only">Loading...</span>
           </div>
         </div>
             )
@@ -41,7 +36,6 @@ console.log(profileInfo)
           <LandingUser/>
         )
           }
-       
     </div>
   );
 };
