@@ -50,7 +50,6 @@ const AllUsersYouLiked = ({ userinfo, sethandleNavigate }) => {
       };
       dispatch(NewNotification(notificaion));
     } catch (e) {
-      console.log(e);
     }
   };
 

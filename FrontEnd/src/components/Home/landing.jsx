@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { getAllUsers } from "../../Redux/Actions/ActionAllUsers";
 import LandingUser from "./landingUser";
+import loder from "../../assets/images/system-regular-715-spinner-horizontal-dashed-circle.gif"
 
 const Landing = () => {
   const profileInfo = JSON.parse(localStorage.getItem("profile"));
@@ -27,9 +28,8 @@ const Landing = () => {
         CurrentUser || profileInfo?(
         <ChatGeneral/> 
           ):(
-          <div className="w-full h-[90vh] bg-white flex items-center justify-center rounded-3xl">
-          <div class="animate-spin inline-block w-8 h-8 border-[3px] border-current border-t-transparent text-lgrn rounded-full dark:text-lgrn" role="status" aria-label="loading">
-          </div>
+          <div className="w-full h-[80vh] bg-white flex items-center justify-center rounded-3xl">
+             <img src={loder} className="w-11 max-sm:w-7" alt="" />
         </div>
             )
         ):(

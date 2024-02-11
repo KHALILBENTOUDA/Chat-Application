@@ -16,22 +16,24 @@ const creatChat=AsyncHandler(async(req,res,next)=>{
 //      const sql_create_chat = 'INSERT INTO Chat (members) VALUES (?)'
      // for Railway
 
+     
      const sql_create_chat = 'INSERT INTO Chat (members) VALUES (?)'
-
+     
      const sql_getChat ='SELECT * FROM Chat WHERE JSON_CONTAINS(members, ?) AND JSON_CONTAINS(members, ?);'
      const value_chat = [chatData.members]
+     // railway
 
+     const values_get_chat = [JSON.stringify(sender), JSON.stringify(resever)]; 
 
      db.query(sql_create_chat,value_chat,(err,result)=>{
-      console.error(err)
       if(err) return new AppErrorClass(500, err, statusText.FAIL)
-      db.query(sql_getChat,[sender,resever],(err,result)=>{
+      db.query(sql_getChat,values_get_chat,(err,result)=>{
+
             if(err) return new AppErrorClass(500,err, statusText.FAIL)
                   res.status(200).json({
                         status:statusText.SUCCESS,
                         chat:result
                   })
-      
            })
      
       })

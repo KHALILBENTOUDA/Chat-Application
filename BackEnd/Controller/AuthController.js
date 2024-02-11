@@ -52,8 +52,6 @@ const register = AsyncHandler(async (req, res, next) => {
             const link = `https://matcha-avzq.onrender.com/${user_id}/verify/${verificationToken}`;
             
 
-            // //
-            console.log(link)
             sendVerifyEmail({
               email: req.body.email,
               subject: 'Verify your email address',
@@ -106,7 +104,6 @@ const register = AsyncHandler(async (req, res, next) => {
 
 const login = AsyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
-  console.log(req.body)
   if (!email || !password) {
     return next(
       new AppErrorClass(401, "Email Or Password are Required", statusText.FAIL)
@@ -205,7 +202,6 @@ const login = AsyncHandler(async (req, res, next) => {
                                           `
                                     }
                               )
-                              console.log(results)
                               res.status(201).json({
                                 status: statusText.SUCCESS,
                                 message: "An Email has been sent to your account please check your email",

@@ -37,7 +37,6 @@ const NoticLocalisation = () => {
               locaitondata
             );
 
-            console.log(res);
 
             if (res.status === "success") {
             }
@@ -74,7 +73,6 @@ const NoticLocalisation = () => {
               `${BASE_URL}/api/v1/location`,
               locaitondata
             );
-            console.log(res);
             if (res.status === "success") {
             }
           } catch (axiosError) {}
@@ -96,7 +94,6 @@ const NoticLocalisation = () => {
     return null;
   }
 
-  console.log(profileInfo)
   
   return (
     <>

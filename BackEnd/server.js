@@ -4,11 +4,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const path = require("node:path");
 const cors = require("cors");
-const io = require('socket.io')(8800, {
-    cors: {
-      origin: "https://matcha-avzq.onrender.com",
-    }
-  }); 
+
   
 const http = require('http');
 const AuthRoutes = require("./Routes/authRoutes");
@@ -25,10 +21,16 @@ const AppErrorClass = require("./Middlewares/AppErrorClass");
 const app = express();
 const server = http.createServer(app);
 const PORT = process.env.PORT || 3000;
+const io = require('socket.io')(server,{
+  cors: {
+    origin: "https://matcha-avzq.onrender.com",
+  }
+}); 
 
 
 let activeUsers = [];
 io.on("connection", (socket) => {
+  console.log('connect')
   socket.on('new_user', (newUserId) => {
     if (!activeUsers.some((user) => user.userId === newUserId)) {
       activeUsers.push({

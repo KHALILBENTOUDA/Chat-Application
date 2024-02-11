@@ -32,7 +32,6 @@ const handleSubmite=async(e)=>{
   e.preventDefault()
   try{
     const res = await UpdateUser(profileInfo.id,formData)
-    console.log(res)
     setformData({
       name: '',
       lastname: '',

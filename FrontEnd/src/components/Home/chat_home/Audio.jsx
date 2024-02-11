@@ -42,7 +42,6 @@ class Audio extends React.Component {
                   this.setState({ isBlocked: false });
                 },
                 () => {
-                  console.log('Permission Denied');
                   this.setState({ isBlocked: true })
                 },
               );

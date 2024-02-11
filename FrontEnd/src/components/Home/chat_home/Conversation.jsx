@@ -39,7 +39,6 @@ const Conversation = ({
           dispatch({ type: "SAVE_USER_CHAT", data: data.User });
         }
       } catch (err) {
-        console.log(err.message);
       }
     };
     getData();

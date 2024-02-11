@@ -7,7 +7,7 @@ const uploadFunction=(folder,name)=>{
 
     const diskStorage=multer.diskStorage({
         destination:function(req,file,cb){
-            cb(null,`uploads/${folder}`)
+            cb(null,`Uploads/${folder}`)
         },
         filename:function(req,file,cb){
             const ext=file.mimetype.split('/')[1];

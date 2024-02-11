@@ -76,6 +76,7 @@ const UserProfile = ({ sethandleNavigate, setcurrentChat }) => {
     fetchUser();
   }, [profileInfo.id, CurrentUser.id]);
 
+
 const handlelike = async (idC_Liked) => {
       try {
         const likeData = {
@@ -125,13 +126,11 @@ const handlelike = async (idC_Liked) => {
       const first_id = profileInfo.id;
       const second_id = CurrentUser.id;
       const getchatdata = await getChat(first_id, second_id);
-      console.log(getchatdata);
       if (getchatdata.data.chat[0]) {
         setcurrentChat(getchatdata.data.chat[0]);
         navigate("/chat");
       } else {
         const res = await startChatWith(chatDat);
-        console.log(res)
         setcurrentChat(res.data.chat[0]);
 
         navigate("/chat");
@@ -206,7 +205,6 @@ const handlelike = async (idC_Liked) => {
       return;
     }
     const formData = new FormData();
-    console.log(formData)
     formData.append("pictures", selectedFilepost);
     dispatch(SendEmageProfilePost(profileInfo.id, formData));
   };

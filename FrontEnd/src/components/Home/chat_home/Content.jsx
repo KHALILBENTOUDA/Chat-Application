@@ -49,15 +49,15 @@ const Content = ({
         const { data } = await userChats(CurrentUserId);
         setChats(data.chat);
       } catch (err) {
-        console.log(err);
       }
     };
     getChats();
   }, [userData]);
 
+
   useEffect(() => {
     // socket.current = io("http://localhost:8800");
-    const socket = io("https://matcha-api-szde.onrender.com");
+    socket.current = io("https://matcha-api-szde.onrender.com");
     socket.current.emit("new_user", CurrentUserId);
     socket.current.on("get_users", (users) => {
       setOnlineUsers(users);

@@ -31,8 +31,6 @@ const RouteAll = () => {
   const userData = useSelector((state) => state.authReducer.authData); 
   const profileInfo = JSON.parse(localStorage.getItem("profile"));
   const token =localStorage.getItem("token");
-  console.log(token)
-  console.log(userData)
   return (
     <BrowserRouter>
         {!userData && <Navbar />}

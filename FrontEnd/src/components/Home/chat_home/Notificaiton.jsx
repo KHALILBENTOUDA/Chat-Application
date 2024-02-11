@@ -70,15 +70,12 @@ const Notificaiton = ({ sethandleNavigate, setCountNotif }) => {
   // }, [notifications, AllUSERS, profileInfo.id]);
 
 
-  console.log(combinedData)
 
   const handleIsRead = async (id) => {
     try {
       const res = await siReadApi({ id: id });
-      console.log(res)
       setIsRead((prevIds) => [...prevIds, id]);
     } catch (e) {
-      console.log(e);
     }
   };
 

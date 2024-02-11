@@ -37,7 +37,6 @@ const Left_side = ({
     sethandleNavigate("profile");
   };
 
-  console.log(CurrentUser)
 
 
 

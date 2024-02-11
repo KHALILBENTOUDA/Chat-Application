@@ -133,7 +133,7 @@ const Chate = ({
         const resposs = await GetUser(userId,token);
         setChatUser(resposs.data.User);
       } catch (err) {
-        console.log(err.message);
+  
       }
     };
     if (chat !== null) getChatBox();

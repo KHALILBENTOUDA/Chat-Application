@@ -14,7 +14,6 @@ function Register() {
   const loading = useSelector((state) => state.authReducer.loading);
   const dispatch=useDispatch()
 
-  console.log(loading)
   const [data, setdata] = useState({
     name:"",
     email:"",
