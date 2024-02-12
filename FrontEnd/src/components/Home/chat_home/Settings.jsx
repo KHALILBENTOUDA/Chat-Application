@@ -3,12 +3,17 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../../Redux/Actions/ActionAuth";
 
-const Settings = ({ sethandleNavigateRigt }) => {
+const Settings = ({ sethandleNavigateRigt,sethandleNavigate }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handle_logout = async () => {
     dispatch(logout(navigate));
   };
+
+  const handleedit=()=>{
+    navigate("/edit_profile")
+    sethandleNavigate("content")
+  }
 
   return (
     <>
@@ -32,7 +37,7 @@ const Settings = ({ sethandleNavigateRigt }) => {
             Viewed
           </li>
           <li
-            onClick={() => navigate("/edit_profile")}
+            onClick={handleedit }
             className="bg-white opacity-70 text-tex font-semibold  cursor-pointer transition duration-200 ease-in-out   flex py-2.5 items-center  px-4 hover:bg-white shadow-sm drop-shadow-sm  text-sm max-md:text-xs  shadow-slate-200 rounded-md hover:shadow-lg my-2 mx-1 hover:opacity-100  "
           >
             <i className="fa-solid fa-edit pr-3"></i>

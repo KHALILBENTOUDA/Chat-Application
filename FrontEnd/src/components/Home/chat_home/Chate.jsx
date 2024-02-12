@@ -32,6 +32,7 @@ const Chate = ({
   typing,
   stopTyping,
   settyping,
+  setChatNot
 }) => {
   const [ChatUser, setChatUser] = useState(null);
   const [messges, setmessges] = useState([]);
@@ -70,6 +71,7 @@ const Chate = ({
     setIsRecording(true);
   };
 
+  console.log(ChatUser)
   const handleStop = () => {
     recorderRef.current.stopRecording(() => {
       const blob = recorderRef.current.getBlob();
@@ -132,6 +134,8 @@ const Chate = ({
       try {
         const resposs = await GetUser(userId,token);
         setChatUser(resposs.data.User);
+        console.log(resposs.data.User)
+        setChatNot(ChatUser)
       } catch (err) {
   
       }
@@ -161,8 +165,6 @@ const Chate = ({
       setSelectedFileMessage(file);
     }
   };
-
-
   const handelSandMessage = async () => {
     if (isRecording) {
       handleStop();

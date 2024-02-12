@@ -20,9 +20,9 @@ const Conversation = ({
   const message_notifications = useSelector(
     (state) => state.MessageNotifications.notificaions
   );
-  const profileInfo = JSON.parse(localStorage.getItem("profile"));
+  const profileInfo = JSON.parse(localStorage.getItem("profile") ?? "{}");
   const token = localStorage.getItem("token");
-  const [notification_m, setnotification_m] = useState(null);
+  const [notification_m, setnotification_m] = useState([]);
   const [text, settext] = useState("");
   const [time, settime] = useState("");
   const [messageEmage, setmessageEmage] = useState("");
@@ -44,40 +44,95 @@ const Conversation = ({
     getData();
   }, []);
 
-  useEffect(() => {
-    const getMessagesNotifications = async () => {
-      try {
-        const res = await getMessageNot(profileInfo.id);
-        // dispatch({type:'MESSAGE_NOTIFICATIONS',data:res.data.notification})
-        const noti = res.data.notification;
-        const tex = noti.filter((not) => not.chat_id === chat.chat_id);
-        const check = noti.filter(
-          (not) => not.chat_id === chat.chat_id && not.is_Read == 0
-        );
-        setnotification_m(check);
-        const lastMessage = tex[tex.length - 1];
-        const lastMessageEmage = tex[tex.length - 1];
-        settext(lastMessage?.text || "");
-        setmessageEmage(lastMessageEmage?.image || "");
 
-        if (lastMessage) {
-          const times = lastMessage.created_at;
+  useEffect(() => {
+  const getnotifi=async()=>{
+    try{
+      const res = await getMessageNot(profileInfo.id,chat.chat_id);
+
+      if(res.data.notification.length > 0 ){
+          setnotification_m(res.data.notification)
+
+
+        const lastMessage=res.data.notification 
+        if(lastMessage.length>0){
+          settext(lastMessage[0]?.text || "")
+          setmessageEmage(lastMessage[0]?.image || "");
+          if (lastMessage[0]) {
+            const times = lastMessage[0].created_at;
+            const dateObj = new Date(times);
+            const hours = dateObj.getHours();
+            const minutes = dateObj.getMinutes() || '';
+            const period = hours >= 12 ? "PM" : "AM";
+            const formattedHours = hours % 12 || 12;
+            const formattedTime = `${formattedHours}:${
+              minutes < 10 ? `0${minutes}` : minutes
+            } ${period}`;
+            settime(formattedTime);
+          }
+        }
+      }else{
+        if(res.data.lastReadNotification ){
+          const lastnot=res.data.lastReadNotification
+          settext(lastnot.text)
+          const times = lastnot.created_at;
           const dateObj = new Date(times);
           const hours = dateObj.getHours();
-          const minutes = dateObj.getMinutes();
+          const minutes = dateObj.getMinutes() || '';
           const period = hours >= 12 ? "PM" : "AM";
           const formattedHours = hours % 12 || 12;
           const formattedTime = `${formattedHours}:${
             minutes < 10 ? `0${minutes}` : minutes
           } ${period}`;
           settime(formattedTime);
+          
         }
-      } catch (e) {
-        console.error("Error fetching messages notifications:", e);
       }
-    };
-    return () => getMessagesNotifications();
-  }, []);
+    }catch(e){
+      console.log(e)
+    }
+  }
+  getnotifi()
+  }, [chat,profileInfo.id])
+
+  
+
+  // useEffect(() => {
+  //   const getMessagesNotifications = async () => {
+  //     try {
+  //       const res = await getMessageNot(profileInfo.id,chat.chat_id);
+  //       // dispatch({type:'MESSAGE_NOTIFICATIONS',data:res.data.notification})
+  //       const noti = res.data.notification;
+  //       console.log(noti)
+  //       const tex = noti.filter((not) => not.chat_id === chat.chat_id);
+  //       console.log(noti)
+  //       const check = noti.filter(
+  //         (not) => not.chat_id === chat.chat_id && not.is_Read == 0
+  //       );
+  //       setnotification_m(check);
+  //       const lastMessage = tex[tex.length - 1];
+  //       const lastMessageEmage = tex[tex.length - 1];
+  //       settext(lastMessage?.text || "");
+  //       setmessageEmage(lastMessageEmage?.image || "");
+
+  //       if (lastMessage) {
+  //         const times = lastMessage.created_at;
+  //         const dateObj = new Date(times);
+  //         const hours = dateObj.getHours();
+  //         const minutes = dateObj.getMinutes();
+  //         const period = hours >= 12 ? "PM" : "AM";
+  //         const formattedHours = hours % 12 || 12;
+  //         const formattedTime = `${formattedHours}:${
+  //           minutes < 10 ? `0${minutes}` : minutes
+  //         } ${period}`;
+  //         settime(formattedTime);
+  //       }
+  //     } catch (e) {
+  //       console.error("Error fetching messages notifications:", e);
+  //     }
+  //   };
+  //   return () => getMessagesNotifications();
+  // },[chat]);
 
   useEffect(() => {
     if (
@@ -88,6 +143,18 @@ const Conversation = ({
       setnotification_m([message_notifications, ...notification_m]);
       settext(message_notifications.text);
       settopNotification(message_notifications);
+      if (message_notifications) {
+        const times = message_notifications.created_at;
+        const dateObj = new Date(times);
+        const hours = dateObj.getHours();
+        const minutes = dateObj.getMinutes();
+        const period = hours >= 12 ? "PM" : "AM";
+        const formattedHours = hours % 12 || 12;
+        const formattedTime = `${formattedHours}:${
+          minutes < 10 ? `0${minutes}` : minutes
+        } ${period}`;
+        settime(formattedTime);
+      }
     }
   }, [message_notifications]);
 
@@ -105,15 +172,6 @@ const Conversation = ({
     sethandleNavigate("contentChat");
   };
   
-
-  // console.log(notification_m)
-  //   const times=notification_m[0]?.created_at
-  //   const dateObj = new Date(times);
-  //   const hours = dateObj.getHours();
-  //   const minutes = dateObj.getMinutes();
-  //   const period = hours >= 12 ? "PM" : "AM";
-  //   const formattedHours = hours % 12 || 12;
-  //   const formattedTime = `${formattedHours}:${minutes} ${period}`;
 
   return (
     <li

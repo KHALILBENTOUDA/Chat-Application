@@ -47,14 +47,24 @@ const PageFriends = () => {
   }, []);
 
   const handleSubmitSearch = async (e) => {
-    e.preventDefault(); // Corrected typo here
+    e.preventDefault();
     try {
-      const { data } = await searchApi(searchData);
-      setusers(data.data);
+        const { data } = await searchApi(searchData);
+        // Create a set to store unique user IDs
+        const uniqueUserIds = new Set();
+        // Filter out duplicate users and add only unique users to the array
+        const uniqueUsers = data.data.filter(user => {
+            if (!uniqueUserIds.has(user.id)) {
+                uniqueUserIds.add(user.id);
+                return true;
+            }
+            return false;
+        });
+        setusers(uniqueUsers);
     } catch (e) {
-      console.log(e);
+        console.log(e);
     }
-  };
+};
 
   const handleEnterKey = (event) => {
     if (event.key === "Enter") {
@@ -155,21 +165,24 @@ const PageFriends = () => {
                 Poeple you may know
               </h1>
               {users.length > 0 ? (
-                <div className="no-scrollbar h-[calc(100vh-320px)]  overflow-y-scroll">
-                  {users.map((user) =>
-                    user.id === profileInfo.id ? null : (
-                      <UserSearch userinfo={user} />
-                    )
-                  )}
-                  {users ? "" : <p>there's no user with this name !</p>}
-                  <h1 className="font-bold text-sm text-slate-400 ml-1 py-4 max-md:text-[13px] ">
-                    Other poeple
-                  </h1>
-                  <Seggentions typeOfUsers={true} />
-                </div>
-              ) : (
-                <Seggentions typeOfUsers={true} />
-              )}
+                    <div className="no-scrollbar h-[calc(100vh-320px)] overflow-y-scroll">
+                        {users.map((user) =>
+                            user.id === profileInfo.id ? null : (
+                                <UserSearch key={user.id} userinfo={user} /> // Add a unique key prop here
+                            )
+                        )}
+                        {users.length === 0 && <p>There are no users with this name!</p>} {/* Render this only if there are no users */}
+                        <h1 className="font-bold text-sm text-slate-400 ml-1 py-4 max-md:text-[13px] ">
+                            Other people
+                        </h1>
+                        <Seggentions typeOfUsers={true} />
+                    </div>
+                ) : (
+                    <div className="no-scrollbar h-[calc(100vh-320px)] overflow-y-scroll">
+                        <Seggentions typeOfUsers={true} />
+                    </div>
+                )}
+
             </div>
           )}
         </div>

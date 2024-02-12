@@ -23,7 +23,7 @@ const Right_side = ({
       }   w-[26%] max-xl:w-[50%]  max-md:w-[100%]  h-[83vh]  max-sm:h-[88vh]  max-md:h-[90vh] no-scrollbar  rounded-xl   shadow-sm overflow-y-auto `}
     >
       {handleNavigateRigt === "setting" ? (
-        <Settings sethandleNavigateRigt={sethandleNavigateRigt} />
+        <Settings sethandleNavigateRigt={sethandleNavigateRigt} sethandleNavigate={sethandleNavigate} />
       ) : handleNavigateRigt === "freinds" ? (
         <Friends
           sethandleNavigate={sethandleNavigate}

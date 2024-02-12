@@ -2,12 +2,6 @@ import React, { useEffect, useState } from "react";
 import profile from "../../../../assets/images/profile-1.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import pror from "../../../../assets/images/user (1).png";
-
-// import {
-//   NewNotification,
-//   getAllNotifications,
-// } from "../../../Redux/Actions/ActionNotification";
-// import { getNotifications } from "../../../Redux/Api/ApiNotifications";
 import {
   UserLikesCount,
   like,

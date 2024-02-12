@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Topline from "./Topline";
 import Content from "./Content";
 import Right_side from "./Right_side";
 import NoticLocalisation from "../NoticLocalisation";
 import UserNotifications from "./UserNotifications";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import loder from "../../../assets/images/system-regular-715-spinner-horizontal-dashed-circle.gif"
+import { GetCurrentUser } from "../../../Redux/Actions/ActionUser";
+import { getAllUsers } from "../../../Redux/Actions/ActionAllUsers";
     
 
 const ChatGeneral = () => {
@@ -13,6 +15,17 @@ const ChatGeneral = () => {
   const CurrentUser = useSelector((state) => state.authReducer.authData);
   const [handleNavigateRigt, sethandleNavigateRigt] = useState("");
   const [CountNotif, setCountNotif] = useState(null);
+  const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    dispatch(GetCurrentUser(token));
+  },[token]);
+
+  useEffect(() => {
+    dispatch(getAllUsers(token))
+  },[token])
+  
   return (
     <div className=" text-tex h-full w-full relative  p-8 max-md:p-3 no-scrollbar bg-cardColor  ">
           <div className="absolute top-[-10%] max-md:top-[-8%] right-[0px]   w-[22rem]  max-md:w-[8rem] h-[14rem] max-sm:[7rem] rounded-full bg-[#a6ddf0b0] filter blur-[72px] max-sm:blur-[50px] "></div>

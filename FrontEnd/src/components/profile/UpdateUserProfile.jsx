@@ -58,7 +58,7 @@ const handleSubmite=async(e)=>{
        <div className=" w-full text-center">
        <label
           htmlFor="username"
-          className="block mb-2 max-md:mb-0.5 ml-1  text-sm font-bold  text-gray-500 max-md:text-[11px]"
+          className="block mb-2 max-md:mb-2.5 ml-1  text-sm max-sm:text-xs font-bold  text-gray-500 "
         >
           Username
         </label>
@@ -67,14 +67,14 @@ const handleSubmite=async(e)=>{
           value={formData.name}
           type="text"
           name="name"
-          className="border mb-3  shadow-sm drop-shadow-sm max-md:placeholder:text-[8px] max-md:p-1.5   max-md:text-xs max-sm:text-[10px]  placeholder:text-xs  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none block w-full p-2.5 dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn "
+          className="flex items-center  border mb-3  shadow-sm drop-shadow-sm max-md:placeholder:text-[10px] max-md:p-2   max-md:text-xs max-sm:text-[12px]  placeholder:text-xs  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none  w-full p-2.5 dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn"
           placeholder="Enter new name"
         />
        </div>
       <div className=" w-full text-center">
       <label
           htmlFor="lastname"
-          className="block mb-2 max-md:mb-0.5 ml-1  text-sm font-bold  text-gray-500 max-md:text-[11px]"
+          className="block mb-2 max-md:mb-2.5 ml-1  text-sm font-bold max-sm:text-xs text-gray-500 "
         >
           Lastname
         </label>
@@ -83,7 +83,7 @@ const handleSubmite=async(e)=>{
          value={formData.lastname}
           type="text"
           name="lastname"
-          className="border mb-3  shadow-sm drop-shadow-sm max-md:placeholder:text-[8px] max-md:p-1.5   max-md:text-xs max-sm:text-[10px]  placeholder:text-xs  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none block w-full p-2.5 dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn "
+          className="flex items-center  border mb-3  shadow-sm drop-shadow-sm max-md:placeholder:text-[10px] max-md:p-2   max-md:text-xs max-sm:text-[12px]  placeholder:text-xs  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none  w-full p-2.5 dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn"
           placeholder="Enter new lastname"
         />
 
@@ -93,7 +93,7 @@ const handleSubmite=async(e)=>{
        
         <label
           htmlFor=""
-          className="block mb-2 max-md:mb-0.5 ml-1  text-sm font-bold  text-gray-500 max-md:text-[11px]"
+          className="block mb-2 max-md:mb-2 ml-1  text-sm font-bold max-sm:text-xs  text-gray-500 mt-4 "
         >
         BirthDate:
         </label>
@@ -102,13 +102,13 @@ const handleSubmite=async(e)=>{
          value={formData.age}
           type="date"
           name="age"
-          className="border mb-3  shadow-sm drop-shadow-sm max-md:placeholder:text-[8px] max-md:p-1.5   max-md:text-xs max-sm:text-[10px]  placeholder:text-xs  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none block w-full p-2.5 dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn "
+          className="flex items-center  border mb-5 max-sm:text-xs  shadow-sm drop-shadow-sm max-md:placeholder:text-[10px] max-md:p-2   max-md:text-xs max-sm:text-[12px]  placeholder:text-xs  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none  w-full p-2.5 dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn "
           placeholder="0000-00-00 "
         />
 
         <label
           htmlFor="gender"
-          className="block mb-2 max-md:mb-0.5 ml-1  text-sm font-bold  text-gray-500 max-md:text-[11px]"
+          className="block mb-2 max-md:mb-2.5 ml-1  text-sm font-bold max-sm:text-xs  text-gray-500 "
         >
           Gender:
         </label>
@@ -116,7 +116,7 @@ const handleSubmite=async(e)=>{
           name="gender"
           onChange={handleFillBlanks}
           value={formData.gender}
-          className="border mb-3  shadow-sm drop-shadow-sm max-md:placeholder:text-[8px] max-md:p-1.5   max-md:text-xs max-sm:text-[10px]  placeholder:text-xs  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none block w-full p-2.5 dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn "
+          className="flex items-center  border mb-5 shadow-sm drop-shadow-sm max-md:placeholder:text-[10px] max-md:p-2   max-md:text-xs max-sm:text-[12px]  placeholder:text-xs  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none  w-full p-2.5 dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn"
         >
           <option value="">Gender</option>
           <option value="1">Male</option>
@@ -126,7 +126,7 @@ const handleSubmite=async(e)=>{
     
         <label
           htmlFor="biography"
-          className="block mb-2 max-md:mb-0.5 ml-1  text-sm font-bold  text-gray-500 max-md:text-[11px]"
+          className="block mb-2 max-md:mb-2.5 ml-1  text-sm font-bold max-sm:text-xs  text-gray-500 "
 
         >
           Biography:
@@ -135,7 +135,7 @@ const handleSubmite=async(e)=>{
          onChange={handleFillBlanks}
          value={formData.biography}
           name="biography"
-          className="border mb-3  shadow-sm drop-shadow-sm max-md:placeholder:text-[8px] max-md:p-1.5   max-md:text-xs max-sm:text-[10px]  placeholder:text-xs  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none block w-full p-2.5 dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn "
+          className="flex items-center  border mb-5  shadow-sm drop-shadow-sm max-md:placeholder:text-[10px] max-md:p-2   max-md:text-xs max-sm:text-[12px]  placeholder:text-xs  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none  w-full p-2.5 dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn"
           placeholder="Write a short biography"
         ></textarea>
 
@@ -146,7 +146,7 @@ const handleSubmite=async(e)=>{
         ></i>
          <label
           htmlFor="pictures"
-          className=" ml-1  text-sm   text-gray-500 max-md:text-[11px]"
+          className=" ml-1  text-sm max-sm:text-xs   text-gray-500 max-md:text-[11px]"
         >
         access to edit your location 
         </label>
@@ -156,7 +156,7 @@ const handleSubmite=async(e)=>{
             <div className="">
             <label
               htmlFor="pictures"
-              className="block mb-2 max-md:mb-0.5 ml-1  text-sm font-bold  text-gray-500 max-md:text-[11px]"
+              className="block mb-2 max-md:mb-2.5 ml-1  max-sm:text-xs text-xs font-bold  text-gray-500 "
             >
             Country:
             </label>
@@ -165,12 +165,12 @@ const handleSubmite=async(e)=>{
              value={formData.country}
               type="text"
               name="country"
-              className="border mb-3  shadow-sm drop-shadow-sm max-md:placeholder:text-[8px] max-md:p-1.5   max-md:text-xs max-sm:text-[10px]  placeholder:text-xs  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none block w-full p-2.5 dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn "
+              className="flex items-center  border mb-5  shadow-sm drop-shadow-sm max-md:placeholder:text-[10px] max-md:p-2   max-md:text-xs max-sm:text-[12px]  placeholder:text-xs  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none  w-full p-2.5 dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn "
               placeholder="Enter your current country "
             />
              <label
               htmlFor="pictures"
-              className="block mb-2 max-md:mb-0.5 ml-1  text-sm font-bold  text-gray-500 max-md:text-[11px]"
+              className="block mb-2 max-md:mb-2.5 ml-1 max-sm:text-xs  text-sm font-bold  text-gray-500 "
     
             >
             City:
@@ -180,12 +180,12 @@ const handleSubmite=async(e)=>{
              value={formData.city}
               type="text"
               name="city"
-              className="border mb-3  shadow-sm drop-shadow-sm max-md:placeholder:text-[8px] max-md:p-1.5   max-md:text-xs max-sm:text-[10px]  placeholder:text-xs  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none block w-full p-2.5 dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn "
+              className="flex items-center  border mb-5 max-sm:text-xs  shadow-sm drop-shadow-sm max-md:placeholder:text-[10px] max-md:p-2   max-md:text-xs max-sm:text-[12px]  placeholder:text-xs  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none  w-full p-2.5 dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn"
               placeholder="Enter your current city "
             />
              <label
               htmlFor="pictures"
-              className="block mb-2 max-md:mb-0.5 ml-1  text-sm font-bold  text-gray-500 max-md:text-[11px]"
+              className="block mb-2 max-md:mb-2.5 ml-1 max-sm:text-xs  text-sm font-bold  text-gray-500 "
             >
             neighborhood:
             </label>
@@ -194,7 +194,7 @@ const handleSubmite=async(e)=>{
              value={formData.neighborhood}
               type="text"
               name="neighborhood"
-              className="border mb-3  shadow-sm drop-shadow-sm max-md:placeholder:text-[8px] max-md:p-1.5   max-md:text-xs max-sm:text-[10px]  placeholder:text-xs  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none block w-full p-2.5 dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn "
+              className="flex items-center  border mb-5  shadow-sm drop-shadow-sm max-md:placeholder:text-[10px] max-md:p-2   max-md:text-xs max-sm:text-[12px]  placeholder:text-xs  shadow-slate-100  text-gray-700 sm:text-sm rounded-xl  outline-none  w-full p-2.5 dark:placeholder-gray-300  dark:focus:ring-lgrn dark:focus:border-lgrn"
               placeholder="Enter your current  neighborhood "
             />
             </div>

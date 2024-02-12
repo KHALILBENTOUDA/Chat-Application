@@ -348,32 +348,32 @@ const handlelike = async (idC_Liked) => {
             </div>
           </div>
           <div className="pt-10">
-            <h1 className="text-black font-bold text-xl pt-12 max-sm:pt-6  max-md:pt-3 max-sm:text-xs">
+            <h1 className="text-black font-bold text-xl pb-2  pt-12 max-sm:pt-10  max-md:pt-3 max-sm:text-md">
               {Username.toUpperCase()}
             </h1>
-            <p className="text-sm font-bold text-grn max-sm:text-[10px] ">
+            <p className="text-sm font-bold text-grn max-sm:text-[11px] ">
               @{CurrentUser.lastname}
             </p>
-            <div className=" py-5 max-sm:py-2  text-xs max-sm:text-[8px]">
+            <div className=" py-5 max-sm:py-2  text-xs max-sm:text-[10px]">
               software Developper
             </div>
             <div className="flex items-center  justify-around pt-6  max-sm:pt-1   w-[60%] mx-auto">
               <div className="">
-                <span className="text-black font-bold text-2xl max-sm:text-[15px] max-md:text-md ">
+                <span className="text-black font-bold text-2xl max-sm:text-[17px] max-md:text-md ">
                   {likesCount}
                 </span>
-                <p className="opacity-30 text-xs font-bold max-md:text-[11px] max-sm:text-[9px] ">
+                <p className="opacity-30 text-xs font-bold max-md:text-[11px] max-sm:text-[11px] ">
                   Likers
                 </p>
               </div>
               <div className="">
-                <span className="text-black font-bold text-2xl max-sm:text-[15px] max-md:text-md ">{`${photos?.length}`}</span>
-                <p className="opacity-30 text-xs font-bold max-md:text-[11px] max-sm:text-[9px]  ">
+                <span className="text-black font-bold text-2xl max-sm:text-[17px] max-md:text-md ">{`${photos?.length}`}</span>
+                <p className="opacity-30 text-xs font-bold max-md:text-[11px] max-sm:text-[11px]  ">
                   Photos
                 </p>
               </div>
               <div className="text-center">
-                <span className="text-black font-bold text-2xl flex items-center max-sm:text-[15px] max-md:text-md">
+                <span className="text-black font-bold text-2xl flex items-center max-sm:text-[17px] max-md:text-md">
                   <p>4.5</p>
                   <img
                     src={star}
@@ -381,7 +381,7 @@ const handlelike = async (idC_Liked) => {
                     alt=""
                   />
                 </span>
-                <p className="opacity-30 text-xs font-bold max-md:text-[11px] max-sm:text-[9px]  ">
+                <p className="opacity-30 text-xs font-bold max-md:text-[11px] max-sm:text-[11px]  ">
                   Reviews
                 </p>
               </div>
@@ -393,7 +393,7 @@ const handlelike = async (idC_Liked) => {
                     ? () => handleUnlike(idC_Liked)
                     : () => handlelike(idC_Liked)
                 }
-                className={`w-[40%] text-lg   h-8 max-sm:h-6 max-md:text-xs  rounded-full ${
+                className={`w-[40%] text-lg   h-8 max-sm:h-7 max-md:text-xs  rounded-full ${
                   isLiked ? " bg-ble" : " bg-lgrn"
                 } text-white`}
               >
@@ -409,7 +409,7 @@ const handlelike = async (idC_Liked) => {
                 isLikedmessage ? (
                   <button
                     onClick={startChat}
-                    className="w-[40%] pr-1 h-8 rounded-full  max-sm:h-6 max-md:text-xs   bg-slate-100 text-black  max-sm:text-[10px]  flex items-center justify-center "
+                    className="w-[40%] pr-1 h-8 rounded-full  max-sm:h-7 max-md:text-xs   bg-slate-100 text-black  max-sm:text-[10px]  flex items-center justify-center "
                   >
                     <i className="fa-solid fa-paper-plane text-black text-xs pr-2"></i>
                     <h1 className="text-md">message</h1>
@@ -418,7 +418,7 @@ const handlelike = async (idC_Liked) => {
               ) : (
                 <button
                   onClick={() => navigate("/edit_profile")}
-                  className="w-[45%] pr-1 h-8 rounded-full    max-sm:h-6 max-md:text-xs max-sm:text-[10px]  bg-slate-100 text-black flex items-center justify-center "
+                  className="w-[45%] pr-1 h-8 rounded-full    max-sm:h-7 max-md:text-xs max-sm:text-[10px]  bg-slate-100 text-black flex items-center justify-center "
                 >
                   <i className="fa-solid fa-pencil text-black text-[10px] pr-2"></i>
                   <h1 className="text-md">Edit profile</h1>
@@ -491,8 +491,11 @@ const handlelike = async (idC_Liked) => {
                       }
                   </div>
                   <hr className="mt-5" />
-                  <h1 className="text-black font-bold text-lg py-3 max-md:text-sm">
+                  <h1 className="text-black font-bold text-lg py-3 max-md:text-sm flex items-center justify-between">
                     Details
+                  <i 
+                   onClick={() => navigate("/edit_profile")}
+                  className="fa-solid w-10 h-10 max-sm:w-8 max-sm:h-8 flex items-center justify-center   bg-white rounded-full  fa-edit cursor-pointer"></i>
                   </h1>
                   <ul className=" flex flex-col items-start justify-center">
                     <li className="flex items-center gap-4 pb-4">

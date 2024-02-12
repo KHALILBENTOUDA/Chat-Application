@@ -12,15 +12,8 @@ const Landing = () => {
   const profileInfo = JSON.parse(localStorage.getItem("profile"));
   const CurrentUser = useSelector((state) => state.authReducer.authData);
   const [location, setlocation] = useState(null)
-  const dispatch = useDispatch();
   const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    dispatch(GetCurrentUser(token));
-  },[]);
-  useEffect(() => {
-    dispatch(getAllUsers(token))
-  },[token])
   return (
     <div className="relative">
       {

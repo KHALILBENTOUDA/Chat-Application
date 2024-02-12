@@ -43,28 +43,28 @@ const Topline = ({ navigate, sethandleNavigate, sethandleNavigateRigt }) => {
 
   return (
     <nav className="bg-white shadow-lg shadow-slate-100 rounded-t-xl relative p-1.5">
-      <div className="w-[98%] mx-auto flex flex-wrap items-center justify-between ">
+      <div className="w-[98%] mx-auto flex flex-wrap items-center justify-between  ">
         <a href="/" className="">
           <img src={logo} className="mr-3 w-[120px] max-md:w-[90px] " alt="" />
         </a>
 
-        <ul className="flex items-center gap-12 max-md:justify-center max-md:gap-4">
+        <ul className="flex items-center gap-12 max-md:justify-center max-md:gap-9">
           <li className="" onClick={chatNavigate}>
             <Link>
-              <img className="w-[25px] max-md:w-[17px]" src={item1} alt="" />
+              <img className="w-[25px] max-md:w-[20px]" src={item1} alt="" />
             </Link>
           </li>
           <li className="flex items-center" onClick={friendNavigate}>
             <Link>
               <img
-                className="w-[23px] max-md:w-[17px] mb-1"
+                className="w-[23px] max-md:w-[20px] mb-1"
                 src={item2}
                 alt=""
               />
             </Link>
           </li>
           <li onClick={notificaionNavigate}>
-            <Link className="text-[23px] max-md:text-[17px]  relative" to="#">
+            <Link className="text-[23px] max-md:text-[20px]  relative" to="#">
               <i className="fa-solid fa-bell text-black"></i>
               {noti_count?.length > 0 ? (
                 <div className="w-3 h-3 max-md:w-2.5 max-md:h-2.5 bg-red-500 rounded-full absolute -right-1 -top-0.5 text-[8px] max-md:text-[7px] text-white flex items-center justify-center font-bold">
@@ -74,7 +74,7 @@ const Topline = ({ navigate, sethandleNavigate, sethandleNavigateRigt }) => {
             </Link>
           </li>
           <li onClick={settingNavigate}>
-            <Link className="text-[23px] max-md:text-[17px] pr-1" to="#">
+            <Link className="text-[23px] max-md:text-[20px] pr-1" to="#">
               <i className="fa-solid fa-cog text-black"></i>
             </Link>
           </li>

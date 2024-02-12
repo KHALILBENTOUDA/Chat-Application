@@ -34,7 +34,7 @@ const User = ({ userinfo, sethandleNavigate }) => {
       }
     };
     fetchUser();
-  }, []);
+  }, [profileInfo.id , user.id]);
 
   const handlelike = async (user) => {
     try {

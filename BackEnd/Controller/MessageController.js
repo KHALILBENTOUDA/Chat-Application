@@ -86,15 +86,21 @@ const sendNotification = AsyncHandler(async (req, res, next) => {
 })
 
 const getNotification = AsyncHandler(async (req, res, next) => {
-    const receiver_id= req.params.receiver_id
-    const sql=`SELECT * FROM ChatNotification WHERE receiver_id = ?`;
-    const value=[receiver_id];
+    const {receiver_id,chat_id} = req.params
+    const sql=`SELECT * FROM ChatNotification WHERE receiver_id = ? AND chat_id = ? AND is_Read=0  ORDER BY created_at DESC `;
+    const sql_last_Read = `SELECT * FROM ChatNotification WHERE receiver_id = ? AND chat_id = ?  ORDER BY created_at DESC LIMIT 1`;
+    const value=[receiver_id,chat_id];
     db.query(sql,value,(err,result)=>{
           if(err) return next(new AppErrorClass(500, err, statusText.FAIL))
-          res.status(200).json({
-                status:statusText.SUCCESS,
-                notification:result,
-          })
+          db.query(sql_last_Read, value, (lastReadErr, lastReadResult) => {
+            if (lastReadErr) return next(new AppErrorClass(500, lastReadErr, statusText.FAIL));
+
+            res.status(200).json({
+                status: statusText.SUCCESS,
+                notification: result,
+                lastReadNotification: lastReadResult[0] // Assuming lastReadResult will return only one record
+            });
+        });
     })
 })
 
@@ -104,9 +110,9 @@ const isReadMessage = AsyncHandler(async (req, res, next) => {
       const value=[chat_id ,receiver_id ];
       db.query(sql,value,(err,result)=>{
             if(err) return next(new AppErrorClass(500, err, statusText.FAIL))
-            res.status(200).json({
-                  status:statusText.SUCCESS,
-            })
+                  res.status(200).json({
+                        status:statusText.SUCCESS,
+                  })
       })
   })
 

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Emage_Profile } from "../../../Redux/Api/ApiEmage";
 import profile from "../../../assets/images/profile-1.jpg";
-import logo from "../../../assets/images/Creative_Chatting_App_Logo-removebg-preview.png";
-
+import logo from '../../../assets/images/2-removebg-preview.png'
 const TopNotificaions = ({ topNotification }) => {
   const [sender, setsender] = useState([]);
   const AllUSERS = useSelector((state) => state.AllUsersReducer.AllUsers);
@@ -25,20 +24,20 @@ const TopNotificaions = ({ topNotification }) => {
 
   return (
     <div className="absolute  max-sm:w-full md:w-[40%]  mx-auto rounded-b-2xl md:rounded-md  backdrop-blur-lg  top-1 z-10 px-5  bg-white  shadow-md shadow-slate-300">
-      <div className="flex items-center">
-        <img src={logo} className="w-[60px]" alt="" />
+      <div className="flex items-center mt-2">
+        <img src={logo} className="w-[80px]" alt="" />
         <p className="opacity-60 px-3 text-[11px]">{formattedTime}</p>
       </div>
-      <hr />
+      <hr className="mt-5"  />
       <div className="flex gap-4 items-center bg-white  h-[70px] relative ">
         <div className="">
-          <h1 className="text-green-500 text-sm">
+          <h1 className=" text-black  text-sm">
             New message from{" "}
-            <span className="font-bold text-black">
+            <span className="ml-2 text-xs text-lgrn">
               {sender[0]?.name} {sender[0]?.lastname}
             </span>
           </h1>
-          <p className="text-[11px] opacity-50 ml-2">
+          <p className="text-xs opacity-60 mt-3">
             {topNotification?.image ? (
               <div className="">
                 <i className="fa-solid fa-image text-[12px] text-3 max-md:text-[9px]  pr-2"></i>
@@ -46,10 +45,10 @@ const TopNotificaions = ({ topNotification }) => {
               </div>
             ) : (
               <div className="">
-                <span className="font-bold text-black">
-                  {sender[0]?.name} {sender[0]?.lastname}
+                <span className="font-bold text-black mr-2">
+                  {sender[0]?.name} <i className=" fa-solid fa-angle-double-right"></i>
                 </span>
-                :{topNotification.text}
+                {topNotification.text}
               </div>
             )}
           </p>
@@ -60,6 +59,7 @@ const TopNotificaions = ({ topNotification }) => {
           alt=""
         />
       </div>
+      
     </div>
   );
 };

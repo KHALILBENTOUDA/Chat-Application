@@ -98,7 +98,7 @@ const NoticLocalisation = () => {
   return (
     <>
       {profileInfo.UserShoies === null ? (
-        <div className="noticLocation h-[200px] max-sm:w-[300px]  rounded-2xl  bg-white  shadow-md shadow-slate-300 ">
+        <div className="noticLocation h-[200px] max-sm:w-[300px]  rounded-2xl  bg-white  shadow-md shadow-slate-300 z-50">
           <div className="w-full  flex justify-end p-2 ">
             <i
               className="fa-solid fa-close text-lg  max-sm:text-md  rounded-full bg-slate-200 w-8 h-8 flex items-center justify-center cursor-pointer "

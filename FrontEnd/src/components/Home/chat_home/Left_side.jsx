@@ -19,6 +19,7 @@ const Left_side = ({
   handleNavigate,
   settopNotification,
   reciveToSocketMSG,
+  ChatNot
 }) => {
   const dispatch = useDispatch();
   const CurrentUser = JSON.parse(localStorage.getItem("profile"));
@@ -127,6 +128,7 @@ const Left_side = ({
                     setnotification_m={setnotification_m}
                     handleNavigate={handleNavigate}
                     settopNotification={settopNotification}
+                    ChatNot={ChatNot}
                   />
                 </div>
               ))

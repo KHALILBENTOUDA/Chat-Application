@@ -36,6 +36,7 @@ const Content = ({
   const [ShowTopNotification, setShowTopNotification] = useState(false);
   const [typing, settyping] = useState(false);
   const [lastOnline, setlastOnline] = useState("");
+  const [ChatNot, setChatNot] = useState(null)
 
   const socket = useRef();
   if (userData === null) {
@@ -56,8 +57,13 @@ const Content = ({
 
 
   useEffect(() => {
-    // socket.current = io("http://localhost:8800");
-    socket.current = io("https://matcha-api-szde.onrender.com");
+    socket.current = io("http://localhost:8800");
+    // socket.current = io("http://localhost:5002",{
+    //   cors: {
+    //     origin: "http://localhost:5173"
+    //   }
+    // });
+
     socket.current.emit("new_user", CurrentUserId);
     socket.current.on("get_users", (users) => {
       setOnlineUsers(users);
@@ -76,8 +82,8 @@ const Content = ({
   useEffect(() => {
     socket.current.on("recieve-message", (data) => {
       settyping(false);
-      setreciveToSocketMSG(data);
       setCurrentNotification(data);
+      setreciveToSocketMSG(data);
     });
   }, [dispatch]);
 
@@ -144,6 +150,7 @@ const Content = ({
             sethandleNavigate={sethandleNavigate}
             CurrentNotification={CurrentNotification}
             handleNavigate={handleNavigate}
+            ChatNot={ChatNot}
           />
           <div
             className={`${
@@ -189,6 +196,7 @@ const Content = ({
                     isTyping={isTyping}
                     typing={typing}
                     settyping={settyping}
+                    setChatNot={setChatNot}
                   />
                 }
               />

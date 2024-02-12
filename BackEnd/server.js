@@ -4,78 +4,32 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const path = require("node:path");
 const cors = require("cors");
-
-  
-const http = require('http');
-const AuthRoutes = require("./Routes/authRoutes");
-const ChatRoutes = require("./Routes/ChatRoutes");
-const LocationRoutes = require("./Routes/LocationRoutes");
-const UserInterest = require("./Routes/InterstRoutes");
-const notificationRoute = require("./Routes/notificationRoutes");
-const MessageRoutes = require("./Routes/MessageRoutes");
-const ViewRoutes = require("./Routes/viewRoutes");
-const UserRoutes = require("./Routes/UserRoutes");
-const EmagesRoutes = require("./Routes/EmageRoutes");
+const AuthRoutes=require("./Routes/authRoutes");
+const ChatRoutes=require("./Routes/ChatRoutes");
+const LocationRoutes=require("./Routes/LocationRoutes");
+const UserInterest=require("./Routes/InterstRoutes");
+const notificationRoute=require("./Routes/notificationRoutes");
+const MessageRoutes=require("./Routes/MessageRoutes");
+const ViewRoutes=require("./Routes/viewRoutes");
+const UserRoutes=require("./Routes/UserRoutes");
 const statusText = require("./Util/statusText");
 const AppErrorClass = require("./Middlewares/AppErrorClass");
 const app = express();
-const server = http.createServer(app);
-const PORT = process.env.PORT || 3000;
-const io = require('socket.io')(server,{
-  cors: {
-    origin: "https://matcha-avzq.onrender.com",
-  }
-}); 
 
-
-let activeUsers = [];
-io.on("connection", (socket) => {
-  console.log('connect')
-  socket.on('new_user', (newUserId) => {
-    if (!activeUsers.some((user) => user.userId === newUserId)) {
-      activeUsers.push({
-        userId: newUserId,
-        socketId: socket.id
-      });
-    }
-    io.emit('get_users', activeUsers);
-  });
-
-  socket.on("disconnect", () => {
-    activeUsers = activeUsers.filter((user) => user.socketId !== socket.id);
-    io.emit('get_users', activeUsers);
-  });
-
-  socket.on('typing',(data)=>{
-    socket.broadcast.emit('typin_status',{...data,status:data})
-  });
-
-  socket.on('stop_typing',()=>{
-    socket.broadcast.emit('typin_status_stop',{status:false})
-  });
-
-  socket.on('sendMessage', (data) => {
-    const { resiverId } = data; // Assuming you have a 'message' property
-    const user = activeUsers.find((user) => user.userId === resiverId);
-    if (user) {
-      io.to(user.socketId).emit('recieve-message',{...data,created_at:new Date(),isRead:false});
-    } else {
-    }
-  });
-});
-
-// Middleware setup
 app.use(cors({
-  origin:['https://matcha-avzq.onrender.com'],
+  origin:['http://localhost:5173'],
   credentials:true
-}));  
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(bodyParser.json());
+const PORT = process.env.PORT;
 
-// Routes setup
+
+// routes 
 app.use('/api/v1',AuthRoutes)
 app.use('/api/v1/user',UserRoutes)
 app.use('/api/v1/chat',ChatRoutes)
@@ -83,36 +37,38 @@ app.use('/api/v1/intrestes',UserInterest)
 app.use('/api/v1/location',LocationRoutes)
 app.use('/api/v1/message',MessageRoutes)
 app.use('/api/v1/view',ViewRoutes)
-app.use('/api/v1/Emages',EmagesRoutes)
 app.use('/api/v1/notification',notificationRoute)
 app.use('/uploads',express.static(path.join(__dirname, 'Uploads')))
 
-// Routes not found 
+// routes not found 
 app.all('*',(req,res,next)=>{
-  next(new AppErrorClass(404,'Page Not Found',statusText.FAIL))
+    next(new AppErrorClass(404,'Page Not Found',statusText.FAIL))
 })
 
-// Error handling middleware
+// handle oll the errors in tne app
 app.use((error,req,res,next)=>{
-  const statusText=error.statusText || "error"
-  const status=error.status || 500
-  res.status(status).json({
-      status: statusText,
-      message:error.message,
-      code:status,
-  })
+    const statusText=error.statusText || "ERROR"
+    const status=error.status || 500
+    res.status(status).json({
+        status: statusText,
+        message:error.message,
+        code:status,
+    })
+
 })
 
-// Start server
-server.listen(PORT, () => {
-  console.log("Server running on port", PORT);
+
+app.listen(PORT, () => {
+  console.log("server runing in port", PORT);
 });
 
-// Handle unhandled rejections
+
+// catch errors outside of the server
+
 process.on("unhandledRejection", (err) => {
-  console.error("Unhandled Rejection Error :", err);
+  console.error("unhandledRejection Error :", err);
   server.close(() => {
-    console.error("Server shut down due to unhandled rejection.");
+    console.error("Shut down...");
     process.exit(1);
   });
 });
