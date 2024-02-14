@@ -279,16 +279,16 @@ const handlelike = async (idC_Liked) => {
           <i
             onClick={() => sethandleNavigate("leftSide")}
             className="fa-solid md:hidden  fa-angle-left text-[20px] flex items-center justify-center  cursor-pointer text-white  absolute m-1 w-7 h-7 rounded-full "
-          ></i>
+            ></i>
           {CurrentUser.Covers || cover ? (
             <img
-            onError={(e) => { e.target.onerror = null; e.target.src = pro; }}
               src={`${Emage_Cover}${cover || CurrentUser.Covers}`}
+              onError={(e) => { e.target.onerror = null; e.target.src ="alternative.jpg"; }}
               className="w-full rounded-md h-[300px] max-md:h-[200px] shadow-xl bg-slate-100 "
               alt=""
             />
-          ) : (
-            <div className="w-full rounded-md h-[300px] max-md:h-[200px] shadow-md flex items-center justify-center ">
+            ) : (
+              <div className="w-full rounded-md h-[300px] max-md:h-[200px] shadow-md flex items-center justify-center ">
               <i className="fa-solid fa-image opacity-10 text-[100px] max-md:text-[50px]"></i>
             </div>
           )}
@@ -300,14 +300,14 @@ const handlelike = async (idC_Liked) => {
                   name="select"
                   className="transition-all fa-solid fa-camera text-black absolute  right-5 top-[80%] p-2 bg-white rounded-full cursor-pointer hover:bg-slate-100 z-10"
                   onClick={() => document.getElementById("fileInput").click()}
-                ></i>
+                  ></i>
               </div>
               <input
                 onChange={handleFileChangeCover}
                 type="file"
                 id="dropzone-file"
                 className="boder    text-tex  sm:text-sm rounded-xl focus:ring-1 outline-none hidden  w-full   p-2  dark:placeholder-gray-400 font-bold dark:focus:ring-grn dark:focus:border-grn"
-              />
+                />
             </label>
           ) : null}
         </div>
@@ -319,9 +319,10 @@ const handlelike = async (idC_Liked) => {
                 <img
                   src={
                     CurrentUser.picture_url || newEmage
-                      ? `${Emage_Profile}${newEmage || CurrentUser.picture_url}`
-                      : profile
+                    ? `${Emage_Profile}${newEmage || CurrentUser.picture_url}`
+                    : profile
                   }
+                  onError={(e) => { e.target.onerror = null; e.target.src = pro; }}
                   className="w-[110px] h-[110px] lg:h-[130px]  lg:w-[130px] rounded-full  max-md:border-2 max-sm:w-[90px] max-sm:h-[90px]   border-4 border-white bg-slate-100  "
                   alt=""
                 />
@@ -381,6 +382,8 @@ const handlelike = async (idC_Liked) => {
                     src={star}
                     className="w-6 max-sm:w-4 max-md:w-5"
                     alt=""
+                  onError={(e) => { e.target.onerror = null; e.target.src ="alternative.jpg"; }}
+
                   />
                 </span>
                 <p className="opacity-30 text-xs font-bold max-md:text-[11px] max-sm:text-[11px]  ">
@@ -485,6 +488,8 @@ const handlelike = async (idC_Liked) => {
                         src={`${Emage_Post}${item?.Posts}`}
                         className="w-14 h-14 max-sm:w-8 max-sm:h-8 rounded-md border-[1px] border-white shadow-sm"
                         alt=""
+                        onError={(e) => { e.target.onerror = null; e.target.src ="alternative.jpg"; }}
+
                       />
                      
                     ))}
@@ -609,6 +614,8 @@ const handlelike = async (idC_Liked) => {
                           src={`${Emage_Post}${item?.Posts}`}
                           className="w-full  rounded-lg  max-md:h-full border-[1px] border-white shadow-sm"
                           alt=""
+                           onError={(e) => { e.target.onerror = null; e.target.src ="alternative.jpg"; }}
+
                         />
                       </div>
                     ))

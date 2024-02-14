@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import profile from "../../../assets/images/profile-1.jpg";
 import Seggentions from "./Seggentions";
 import { useDispatch, useSelector } from "react-redux";
+import pro from "../../../assets/images/profile-user.png";
+
 import {
   getNotifications,
   siReadApi,
