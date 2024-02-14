@@ -121,6 +121,7 @@ const Notificaiton = ({ sethandleNavigate, setCountNotif }) => {
                 >
                   <div className="flex items-center ">
                   <img
+                     onError={(e) => { e.target.onerror = null; e.target.src = pro; }}
                     src={`${Emage_Profile}${not.senderInfo.picture_url}`}
                     className="h-10 w-10 max-md:h-7 max-md:w-7 rounded-full"
                     alt=""

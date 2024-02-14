@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { getMessageNot } from "../../../Redux/Api/ApiMessages";
 import { Emage_Profile } from "../../../Redux/Api/ApiEmage";
 import pror from "../../../assets/images/user (1).png";
+import pro from "../../../assets/images/profile-user.png";
+
 const Conversation = ({
   chat,
   currentUser,
@@ -187,6 +189,7 @@ const Conversation = ({
           <>
           <div className=" relative flex items-end justify-end">
           <img
+             onError={(e) => { e.target.onerror = null; e.target.src = pro; }}
             src={
               userSide?.picture_url
                 ? `${Emage_Profile}${userSide?.picture_url}`

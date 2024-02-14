@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Emage_Profile } from "../../../Redux/Api/ApiEmage";
 import profile from "../../../assets/images/profile-1.jpg";
+import pro from "../../../assets/images/profile-user.png";
+
 import logo from '../../../assets/images/2-removebg-preview.png'
 const TopNotificaions = ({ topNotification }) => {
   const [sender, setsender] = useState([]);
@@ -54,6 +56,7 @@ const TopNotificaions = ({ topNotification }) => {
           </p>
         </div>
         <img
+           onError={(e) => { e.target.onerror = null; e.target.src = pro; }}
           src={`${Emage_Profile}${sender[0]?.picture_url}`}
           className="w-9 h-9 rounded-full absolute right-2"
           alt=""

@@ -4,6 +4,8 @@ import choseChat from "../../../assets/images/online-dating-with-young-man-woman
 import { format, render, cancel, register } from "timeago.js";
 import { GetUser } from "../../../Redux/Api/ApiCurrentUser";
 import pror from "../../../assets/images/user (1).png";
+import pro from "../../../assets/images/profile-user.png";
+
 
 import {
   AddMessage,
@@ -330,6 +332,7 @@ const Chate = ({
                       className="w-[45px] h-[45px] max-md:w-[32px] max-md:h-[32px] relative flex items-end justify-end"
                     >
                       <img
+                         onError={(e) => { e.target.onerror = null; e.target.src = pro; }}
                         src={
                           ChatUser?.picture_url
                 ? `${Emage_Profile}${ChatUser?.picture_url}`

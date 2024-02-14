@@ -3,6 +3,8 @@ import profile from "../../../assets/images/profile-1.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { UserLikesCount, like, unlike } from "../../../Redux/Api/ApiAllusers";
 import pror from "../../../assets/images/user (1).png";
+import pro from "../../../assets/images/profile-user.png";
+
 
 import {
   NewNotification,
@@ -94,6 +96,8 @@ const User = ({ userinfo, sethandleNavigate }) => {
           <div className="flex items-center gap-4 max-md:gap-3">
             <img
               onClick={() => handleClick(user)}
+              onError={(e) => { e.target.onerror = null; e.target.src = pro; }}
+
               src={
                 user?.picture_url
                 ? `${Emage_Profile}${user?.picture_url}`
@@ -108,7 +112,7 @@ const User = ({ userinfo, sethandleNavigate }) => {
               onClick={() => handleClick(user)}
               className="w-[160px] flex flex-col justify-center"
             >
-              <h1 className="text-sm max-md:text-xs max-sm:text-[11px]  font-bold text-black">
+              <h1 className="text-sm max-md:text-xs max-sm:text-[9.5px]  font-bold text-black">
                 {user.name + "_" + user.lastname}
               </h1>
               <span className="text-xs max-md:text-[8px]  opacity-50">

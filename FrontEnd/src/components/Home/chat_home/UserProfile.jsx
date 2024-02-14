@@ -7,6 +7,8 @@ import Seggentions from "./Seggentions";
 import { useDispatch, useSelector } from "react-redux";
 import ageimage from "../../../assets/images/age.png";
 import gender from "../../../assets/images/genders.png";
+import pro from "../../../assets/images/profile-user.png";
+
 import {
   UserLikesCount,
   getInputChat,
@@ -185,7 +187,6 @@ const handlelike = async (idC_Liked) => {
     formData.append("pictures", selectFileCover);
     dispatch(SendEmageProfileCover(profileInfo.id, formData));
   };
-
   // send Posts
   useEffect(() => {
     if (selectedFilepost) {
@@ -281,6 +282,7 @@ const handlelike = async (idC_Liked) => {
           ></i>
           {CurrentUser.Covers || cover ? (
             <img
+            onError={(e) => { e.target.onerror = null; e.target.src = pro; }}
               src={`${Emage_Cover}${cover || CurrentUser.Covers}`}
               className="w-full rounded-md h-[300px] max-md:h-[200px] shadow-xl bg-slate-100 "
               alt=""

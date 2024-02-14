@@ -3,6 +3,8 @@ import profile from "../../../assets/images/profile-1.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { UserLikesCount, like, unlike } from "../../../Redux/Api/ApiAllusers";
 import pror from "../../../assets/images/user (1).png";
+import pro from "../../../assets/images/profile-user.png";
+
 
 import {
   NewNotification,
@@ -90,6 +92,7 @@ const AllUsersYouLiked = ({ userinfo, sethandleNavigate }) => {
             <div className="flex items-center gap-4 cursor-pointer">
               <img
                 onClick={() => handleClick(user)}
+                onError={(e) => { e.target.onerror = null; e.target.src = pro; }}
                 src={
                   user?.picture_url
                   ? `${Emage_Profile}${user?.picture_url}`

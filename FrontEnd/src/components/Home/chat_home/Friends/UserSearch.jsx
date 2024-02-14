@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import profile from "../../../../assets/images/profile-1.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import pror from "../../../../assets/images/user (1).png";
+import pro from "../../../../assets/images/profile-user.png";
+
 import {
   UserLikesCount,
   like,
@@ -91,6 +93,7 @@ const User = ({ userinfo, sethandleNavigate }) => {
       >
         <div className="flex items-center gap-4">
           <img
+             onError={(e) => { e.target.onerror = null; e.target.src = pro; }}
             onClick={() => handleClick(user)}
             src={
               user?.picture_url ? `${Emage_Profile}${user?.picture_url}` : pror
