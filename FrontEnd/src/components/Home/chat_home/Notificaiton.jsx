@@ -82,6 +82,7 @@ const Notificaiton = ({ sethandleNavigate, setCountNotif }) => {
   const navigate = useNavigate();
   const handleClick = (not) => {
     navigate('/profile')
+    sethandleNavigate('content')
     dispatch({ type: "GET_USERS_DATA", data:not.senderInfo });
     handleIsRead(not.id);
   };

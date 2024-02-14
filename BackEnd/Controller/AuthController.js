@@ -124,6 +124,7 @@ const login = AsyncHandler(async (req, res, next) => {
   // }
 
 
+  console.log(req.body)
 
 
   const results = await new Promise((resolve, reject) => {

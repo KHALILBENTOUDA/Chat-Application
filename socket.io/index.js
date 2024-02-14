@@ -1,6 +1,6 @@
 const io = require('socket.io')(8800,{
   cors: {
-    origin: ["https://matcha-avzq.onrender.com", "https://matcha-api-szde.onrender.com"],
+    origin: ["http://localhost:5173", "https://matcha-api-szde.onrender.com"],
   }
 });
 

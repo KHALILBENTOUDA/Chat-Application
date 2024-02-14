@@ -56,8 +56,8 @@ const Conversation = ({
 
         const lastMessage=res.data.notification 
         if(lastMessage.length>0){
-          settext(lastMessage[0]?.text || "")
-          setmessageEmage(lastMessage[0]?.image || "");
+          settext(lastMessage[0].text || "")
+          setmessageEmage(lastMessage[0]?.image);
           if (lastMessage[0]) {
             const times = lastMessage[0].created_at;
             const dateObj = new Date(times);
@@ -75,6 +75,7 @@ const Conversation = ({
         if(res.data.lastReadNotification ){
           const lastnot=res.data.lastReadNotification
           settext(lastnot.text)
+          setmessageEmage(lastnot.image)
           const times = lastnot.created_at;
           const dateObj = new Date(times);
           const hours = dateObj.getHours();
@@ -133,6 +134,7 @@ const Conversation = ({
   //   };
   //   return () => getMessagesNotifications();
   // },[chat]);
+
 
   useEffect(() => {
     if (

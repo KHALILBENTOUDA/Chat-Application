@@ -53,6 +53,10 @@ body{
     position: relative;
 }
 
+.emoji-picker {
+  background-color: white !important;
+}
+
 .container {
     display: flex;
     align-items: center;

@@ -57,7 +57,7 @@ const Content = ({
 
 
   useEffect(() => {
-    socket.current = io("http://localhost:8800");
+    socket.current = io("http://localhost:5173");
     // socket.current = io("http://localhost:5002",{
     //   cors: {
     //     origin: "http://localhost:5173"
@@ -160,7 +160,7 @@ const Content = ({
               handleNavigate === "profile"
                 ? "max-md:show"
                 : "max-md:hidden"
-            } max-lg:show max-xl:w-full   max-md:w-[100%]  bg-white w-[48%] h-[83vh] mt-1 max-sm:h-[88vh]  max-md:h-[90vh]  relative flex flex-col justify-between rounded-md   `}
+            } max-lg:show max-xl:w-full   max-md:w-[100%]  bg-white w-[48%] h-[83vh] mt-1 max-sm:h-[86vh]  max-md:h-[90vh]  relative flex flex-col justify-between rounded-md   `}
           >
             <Routes>
               <Route

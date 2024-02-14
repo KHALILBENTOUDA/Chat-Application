@@ -51,9 +51,9 @@ const Left_side = ({
         handleNavigate === "content" ||
         handleNavigate === "friends" ||
         handleNavigate === "profile"
-          ? "max-xl:show"
-          : "max-xl:hidden"
-      }  max-xl:w-[50%]  w-[26%] max-md:w-[100%]  h-[83vh] max-sm:h-[88vh]  max-md:h-[90vh]    rounded-xl   shadow-sm no-scrollbar  `}
+        ? "xl:show"
+        : "max-xl:hidden"
+      }  max-xl:w-[50%]  w-[26%] max-md:w-[100%]  h-[83vh] max-sm:h-[86vh]  max-md:h-[90vh]    rounded-xl   shadow-sm no-scrollbar  `}
     >
       <div
         onClick={handleClick}

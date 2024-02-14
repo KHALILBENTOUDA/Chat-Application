@@ -71,7 +71,6 @@ const Chate = ({
     setIsRecording(true);
   };
 
-  console.log(ChatUser)
   const handleStop = () => {
     recorderRef.current.stopRecording(() => {
       const blob = recorderRef.current.getBlob();
@@ -134,7 +133,6 @@ const Chate = ({
       try {
         const resposs = await GetUser(userId,token);
         setChatUser(resposs.data.User);
-        console.log(resposs.data.User)
         setChatNot(ChatUser)
       } catch (err) {
   
@@ -301,6 +299,15 @@ const Chate = ({
     navigate("/profile");
   };
 
+
+  const customButtonStyle = {
+    backgroundColor: 'white', // White background color
+    border: '1px solid black', // Add border for visual distinction
+    borderRadius: '50%', // Make the button circular
+    width: '25px', // Adjust width as needed
+    height: '25px', // Adjust height as needed
+    cursor: 'pointer', // Change cursor to pointer on hover
+  };
   let prevMessageTime = null;
   return (
     <>
@@ -513,9 +520,11 @@ const Chate = ({
                   className="fa-solid fa-microphone text-md text-lgrn"
                 ></i>
               </div>
-              <form className="w-full" accept-charset="UTF-8">
+              <form className="w-full bg-white" accept-charset="UTF-8">
                 <InputEmoji
+        
                   height={25}
+                  
                   value={sendMessage}
                   onChange={handleText}
                   borderRadius={"20px"}
@@ -523,6 +532,7 @@ const Chate = ({
                   onKeyDown={(e) => handleKeyPress(e)}
                   cleanOnEnter
                   onBlur={stopTyping}
+                  theme="light"
                 />
               </form>
               <button

@@ -25,10 +25,10 @@ const ChatGeneral = () => {
   useEffect(() => {
     dispatch(getAllUsers(token))
   },[token])
-  
+
   return (
     <div className=" text-tex h-full w-full relative  p-8 max-md:p-3 no-scrollbar bg-cardColor  ">
-          <div className="absolute top-[-10%] max-md:top-[-8%] right-[0px]   w-[22rem]  max-md:w-[8rem] h-[14rem] max-sm:[7rem] rounded-full bg-[#a6ddf0b0] filter blur-[72px] max-sm:blur-[50px] "></div>
+          <div className="absolute top-[-10%] max-md:top-[-8%] right-[0px]   w-[22rem]  max-md:w-[8rem] h-[14rem] max-sm:[7rem] rounded-full bg-[#a6ddf0b0] filter blur-[72px] ] "></div>
           <div className="absolute top-[300px] max-md:top-[130px]  left-[-8rem] max-sm:left-[-10rem]  w-[21rem] max-md:w-[12rem]  max-sm:[7rem]  h-[14rem] rounded-full bg-notifi2 filter blur-[72px]  "></div>
       {
         CurrentUser?.is_verified?(
