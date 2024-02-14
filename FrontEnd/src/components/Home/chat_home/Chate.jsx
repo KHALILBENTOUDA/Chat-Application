@@ -320,16 +320,12 @@ const Chate = ({
               onClick={() => sethandleNavigate("leftSide")}
               className="fa-solid max-md:text-[14px] max-md:pr-2  md:hidden  fa-angle-left text-[20px] pr-3 cursor-pointer pl-1 "
             ></i>
-
-
-
-
             {
               ChatUser?(
                   <div className="flex items-end justify-end pl-2">
                     <div
                       onClick={handleClick}
-                      className="w-[45px] h-[45px] max-md:w-[32px] max-md:h-[32px] relative flex items-end justify-end"
+                      className="w-[45px] h-[45px] max-md:w-[36px] max-md:h-[36px] relative flex items-end justify-end"
                     >
                       <img
                          onError={(e) => { e.target.onerror = null; e.target.src = pro; }}
@@ -337,7 +333,7 @@ const Chate = ({
                           ChatUser?.picture_url
                 ? `${Emage_Profile}${ChatUser?.picture_url}`
                 : pror}
-                        className="w-[45px] h-[45px] max-md:w-[32px] max-md:h-[32px] rounded-full border-[2px] border-white cursor-pointer"
+                        className="w-[45px] h-[45px] max-md:w-[36px] max-md:h-[36px] rounded-full border-[2px] border-white cursor-pointer"
                         alt=""
                       />
                       {OnlineUsers(chat) ? (
@@ -362,7 +358,7 @@ const Chate = ({
                         </p>
                       ) : (
                         <p className="text-[12px] max-md:text-[8px] opacity-50">
-                          {format(chat.lastOnline)}
+                          Offline
                         </p>
                       )}
                     </div>
@@ -449,7 +445,7 @@ const Chate = ({
                     <div className="mx-4 mb-0.5 flex  ">
                       {ele?.text ? (
                         <p
-                          className={`max-w-xs py-1.5 px-6 max-sm:py-[4px] flex items-center justify-center  max-md:px-4 max-md:text-[14px]   text-md  ${
+                          className={`max-w-xs py-1.5 px-6 max-sm:py-[4px] flex items-center justify-center  max-md:px-4 max-md:text-[16px]   text-md  ${
                             ele?.sender_id === currentUser
                               ? " bg-gradient-to-tr from-grn to-lgrn text-white rounded-r-md rounded-br-[100px] rounded-tr-[10px]  rounded-s-[100px]"
                               : "bg-gray-100 text-gray-700 rounded-3xl "
@@ -468,6 +464,8 @@ const Chate = ({
                           src={`${Emage_Message}${ele?.image}`}
                           alt=""
                           srcSet=""
+                         onError={(e) => { e.target.onerror = null; e.target.src = pro; }}
+
                         />
                       ) : null}
                     </div>
@@ -485,6 +483,7 @@ const Chate = ({
               <div class="container py-4  bottom-0">
                 <img
                   src={`${Emage_Profile}${ChatUser?.picture_url}`}
+                  onError={(e) => { e.target.onerror = null; e.target.src = pro; }}
                   onClick={handleClick}
                   className="w-[35px] h-[35px] max-md:w-[30px] max-md:h-[30px] ml-2  shadow-md shadow-slate-200 drop-shadow-md rounded-full border-[2px] border-white cursor-pointer "
                   alt=""
