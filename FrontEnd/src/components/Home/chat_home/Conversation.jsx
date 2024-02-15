@@ -196,7 +196,7 @@ const Conversation = ({
                 : pror
             }
             onClick={() => handleClick(userSide)}
-            className="w-14 h-12  max-md:w-10  max-md:h-9    rounded-full border-[2px] border-white cursor-pointer"
+            className="w-14 h-12  max-md:w-10  max-md:h-9    rounded-full border-[1px] border-white cursor-pointer"
             alt=""
           />
           {OnlineUsers && (

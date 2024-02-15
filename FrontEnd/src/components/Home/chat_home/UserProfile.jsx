@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import ageimage from "../../../assets/images/age.png";
 import gender from "../../../assets/images/genders.png";
 import pro from "../../../assets/images/profile-user.png";
+import imp from "../../../assets/images/default-fallback-image.png";
+
 
 import {
   UserLikesCount,
@@ -275,7 +277,7 @@ const handlelike = async (idC_Liked) => {
     <div ref={scroll} className="overflow-y-scroll no-scrollbar ">
       <div className=" ">
         <div className=" w-full relative">
-          <div className="h-10 w-full bg-white absolute opacity-20   shadow-md  "></div>
+          <div className="h-10 w-full bg-white absolute opacity-30 "></div>
           <i
             onClick={() => sethandleNavigate("leftSide")}
             className="fa-solid md:hidden  fa-angle-left text-[20px] flex items-center justify-center  cursor-pointer text-white  absolute m-1 w-7 h-7 rounded-full "
@@ -283,8 +285,8 @@ const handlelike = async (idC_Liked) => {
           {CurrentUser.Covers || cover ? (
             <img
               src={`${Emage_Cover}${cover || CurrentUser.Covers}`}
-              onError={(e) => { e.target.onerror = null; e.target.src ="alternative.jpg"; }}
-              className="w-full rounded-md h-[300px] max-md:h-[200px] shadow-xl bg-slate-100 "
+              onError={(e) => { e.target.onerror = null; e.target.src =imp; }}
+              className="w-full rounded-md max-sm:rounded-xs  h-[300px] max-md:h-[200px] shadow-sm shadow-slate-200  bg-slate-100  "
               alt=""
             />
             ) : (
@@ -315,7 +317,7 @@ const handlelike = async (idC_Liked) => {
         <div className="text-center ">
           <div className=" relative">
             <div className="w-full  flex justify-center absolute -top-14 max-sm:-top-10 ">
-              <div className=" relative rounded-full shadow-md shadow-slate-100 drop-shadow-sm  ">
+              <div className=" relative rounded-full shadow-sm shadow-slate-200  bg-white ">
                 <img
                   src={
                     CurrentUser.picture_url || newEmage
@@ -323,7 +325,7 @@ const handlelike = async (idC_Liked) => {
                     : profile
                   }
                   onError={(e) => { e.target.onerror = null; e.target.src = pro; }}
-                  className="w-[110px] h-[110px] lg:h-[130px]  lg:w-[130px] rounded-full  max-md:border-2 max-sm:w-[90px] max-sm:h-[90px]   border-4 border-white bg-slate-100  "
+                  className="w-[110px] h-[110px] lg:h-[130px]  lg:w-[130px] rounded-full  max-md:border-2 max-sm:w-[90px] max-sm:h-[90px]   border-[2px] border-white "
                   alt=""
                 />
                 {profileInfo.id === CurrentUser.id ? (

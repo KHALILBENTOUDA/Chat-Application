@@ -344,7 +344,6 @@ const Chate = ({
                         ""
                       )}
                     </div>
-
                     <div
                       onClick={handleClick}
                       className="px-4 max-md:px-2 cursor-pointer"

@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 3000;
 
 const io = require('socket.io')(server,{
     cors: {
-      origin: "https://matcha-avzq.onrender.com",
+      origin: "http://localhost:5173",
     }
   });
   
@@ -66,7 +66,7 @@ io.on("connection", (socket) => {
 
 // Middleware setup
 app.use(cors({
-  origin:['https://matcha-avzq.onrender.com'],
+  origin:['http://localhost:5173'],
   credentials:true
 }));  
 app.use(express.json());
